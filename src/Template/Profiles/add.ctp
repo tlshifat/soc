@@ -40,7 +40,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12"> Name</label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('name', ['class' => 'form-control','placeholder' => 'First Name', 'required' => true, 'label' => false]); ?>
+                                                <?php echo $this->Form->input('name', ['class' => 'form-control','placeholder' => 'Full Name', 'required' => true, 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -48,15 +48,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12">Mobile</label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('mobile', ['class' => 'form-control','placeholder' => 'Last Name', 'label' => false]); ?>
+                                                <?php echo $this->Form->input('mobile', ['class' => 'form-control','placeholder' => 'Mobile', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
-
-
                                 <div class="hr-line-dashed"></div>
+<!--                                two block  start -->
                                 <div class ="row">
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12 ">Email</label>
@@ -67,48 +66,58 @@
                                         </div>
                                     </div>
 
-
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12 ">Present Address</label>
+                                        <div class="form-group"><label class="col-sm-12">Present Address</label>
                                             <div class="col-sm-12">
-                                                <?php  echo $this->Form->control('present_address',['type' => 'text','class' => ' form-control','label' => false]); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12 ">Permanent Address</label>
-                                            <div class="col-sm-12">
-                                                <?php  echo $this->Form->control('permanent_address',['multiple' => false,'empty' => 'Please select Role','options' => @$role_data,'type' => 'select','class' => 'select2_demo_1 form-control','label' => false]); ?>
+                                                <?php echo $this->Form->input('present_address', ['class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
+<!--                                two block end -->
+                                <div class="hr-line-dashed"></div>
+                                <!--                                two block  start -->
+                                <div class ="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="col-sm-12"> Permanent Address </label>
+                                            <div class="col-sm-12">
+                                                <?php echo $this->Form->input('permanent_address', ['class' => 'form-control','placeholder' => 'Permanent Address', 'required' => true, 'label' => false]); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="col-sm-12">No Of share</label>
+                                            <div class="col-sm-12">
+                                                <?php echo $this->Form->input('no_of_share', ['class' => 'form-control','placeholder' => 'No. Of Share', 'label' => false]); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--                                two block end -->
+
+
 
                                 <div class="hr-line-dashed"></div>
                                 <div class ="row">
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12 ">Image</label>
+                                        <div class="form-group"><label class="col-sm-12"> Picture </label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('picture', ['type' => 'password','class' => 'form-control', 'placeholder' => 'Password', 'label' => false]); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12 ">Sign</label>
-                                            <div class="col-sm-12">
-                                                <?php echo $this->Form->input('sign', ['type' => 'password','class' => 'form-control', 'placeholder' => 'Password', 'label' => false]); ?>
+                                                <?php echo $this->Form->input('picture', ['class' => 'form-control','placeholder' => 'Picture', 'required' => true, 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12 ">No Of Share</label>
+                                        <div class="form-group"><label class="col-sm-12">Signature</label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('no_of_share', ['type' => 'password','class' => 'form-control', 'placeholder' => 'Confirm Password', 'label' => false]); ?>
+                                                <?php echo $this->Form->input('sgn', ['class' => 'form-control','placeholder' => 'Signature', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
 
