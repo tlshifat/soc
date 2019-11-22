@@ -1,0 +1,30 @@
+2019-11-22 18:25:46 Notice: Notice (8): compact(): Undefined variable: admin in [C:\xampp\htdocs\CakePHP-BoilerPlate\vendor\cakephp\bake\src\Shell\Task\ControllerTask.php, line 158]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+compact - [internal], line ??
+Bake\Shell\Task\ControllerTask::bake() - ROOT\vendor\cakephp\bake\src\Shell\Task\ControllerTask.php, line 158
+Bake\Shell\Task\ControllerTask::main() - ROOT\vendor\cakephp\bake\src\Shell\Task\ControllerTask.php, line 69
+Cake\Console\Shell::runCommand() - CORE\src\Console\Shell.php, line 532
+Cake\Console\Shell::runCommand() - CORE\src\Console\Shell.php, line 525
+Cake\Console\CommandRunner::runShell() - CORE\src\Console\CommandRunner.php, line 342
+Cake\Console\CommandRunner::run() - CORE\src\Console\CommandRunner.php, line 164
+[main] - ROOT\bin\cake.php, line 12
+
+
+
+2019-11-22 18:33:00 Notice: Notice (8): compact(): Undefined variable: admin in [C:\xampp\htdocs\CakePHP-BoilerPlate\vendor\cakephp\bake\src\Shell\Task\ControllerTask.php, line 158]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+compact - [internal], line ??
+Bake\Shell\Task\ControllerTask::bake() - ROOT\vendor\cakephp\bake\src\Shell\Task\ControllerTask.php, line 158
+Bake\Shell\Task\ControllerTask::main() - ROOT\vendor\cakephp\bake\src\Shell\Task\ControllerTask.php, line 69
+Bake\Shell\BakeShell::Bake\Shell\{closure}() - ROOT\vendor\cakephp\bake\src\Shell\BakeShell.php, line 273
+Cake\Collection\Collection::each() - CORE\src\Collection\CollectionTrait.php, line 51
+Bake\Shell\BakeShell::all() - ROOT\vendor\cakephp\bake\src\Shell\BakeShell.php, line 274
+Cake\Console\Shell::runCommand() - CORE\src\Console\Shell.php, line 518
+Cake\Console\CommandRunner::runShell() - CORE\src\Console\CommandRunner.php, line 342
+Cake\Console\CommandRunner::run() - CORE\src\Console\CommandRunner.php, line 164
+[main] - ROOT\bin\cake.php, line 12
+
+
+

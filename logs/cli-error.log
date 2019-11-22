@@ -1,0 +1,25 @@
+2018-08-28 10:39:04 Error: [RuntimeException] Unknown command `cake serve`. Run `cake --help` to get the list of valid commands. in /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 321
+Stack Trace:
+#0 /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/Console/CommandRunner.php(159): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'serve')
+#1 /var/www/html/CakeBoilerPlate/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
+2018-08-30 05:20:36 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'CakePHPBoilerPlate.email_templates' doesn't exist in /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 131
+Stack Trace:
+#0 /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'email_templates', Array, Object(Cake\Database\Schema\TableSchema))
+#1 /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(63): Cake\Database\Schema\Collection->describe('email_templates', Array)
+#2 /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/ORM/Table.php(548): Cake\Database\Schema\CachedCollection->describe('email_templates')
+#3 /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/ORM/Table.php(673): Cake\ORM\Table->getSchema()
+#4 /var/www/html/CakeBoilerPlate/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(221): Cake\ORM\Table->getPrimaryKey()
+#5 /var/www/html/CakeBoilerPlate/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(131): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /var/www/html/CakeBoilerPlate/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(114): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'email_templates', 'EmailTemplates')
+#7 /var/www/html/CakeBoilerPlate/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(101): Bake\Shell\Task\ModelTask->bake('EmailTemplates')
+#8 /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/Console/Shell.php(532): Bake\Shell\Task\ModelTask->main('email_templates')
+#9 /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/Console/Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#10 /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#11 /var/www/html/CakeBoilerPlate/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#12 /var/www/html/CakeBoilerPlate/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#13 {main}
+
+
