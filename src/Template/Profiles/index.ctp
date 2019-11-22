@@ -53,8 +53,7 @@
                                         <th scope="col"><?= $this->Paginator->sort('sgn') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('no_of_share') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
-                                        <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                                        <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+
                                         <th scope="col" class="actions"><?= __('Actions') ?></th>
                                     </tr>
                                     </thead>
@@ -78,8 +77,8 @@
                                                 <td><?= h($profile->sgn) ?></td>
                                                 <td><?= h($profile->no_of_share) ?></td>
                                                 <td><?= h($profile->user_id) ?></td>
-                                                <td><?= h($dateCreatedFormat) ?></td>
-                                                <td><?= h($dateModifiedFormat) ?></td>
+<!--                                                <td>--><?//= h($dateCreatedFormat) ?><!--</td>-->
+<!--                                                <td>--><?//= h($dateModifiedFormat) ?><!--</td>-->
 
                                                 <td class="actions">
                                                     <?= $this->Html->link(__(''), ['action' => 'view', $profile->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
