@@ -33,7 +33,7 @@
                             <h5>Bkash Deposits Detail</h5>
                             <span>
                                 <?= $this->Html->link(__('Back'), ['action' => 'index'],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Back','class' => 'btn btn-success btn-xs pull-right']) ?>
-                                <?= $this->Html->link(__('Edit Profile'), ['action' => 'edit', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-success btn-xs pull-right back-btn']) ?>
+                                <?= $this->Html->link(__('Edit Profile'), ['action' => 'edit', $bkashDeposit->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-success btn-xs pull-right back-btn']) ?>
                             </span>
                         </div>
 
