@@ -16,6 +16,12 @@
         $user_cls  = '';
     }
 
+    if($controller == 'nominees' && ($action == 'add' || $action ==  'view' || $action == 'index')) {
+        $nom_cls  = 'active';
+    }else{
+        $nom_cls  = '';
+    }
+
     if($controller == 'roles' && ($action == 'add' || $action ==  'view' || $action == 'index' || $action == 'assignpermissions')) {
         $role_cls  = 'active';
     }else{
@@ -59,6 +65,17 @@
         </li >
         <li class="<?php echo ($controller == 'profiles' && $action == 'index')?'active' :'' ?>">
             <?php echo $this->Html->Link('Profiles',array('controller' =>'profiles','action'=> 'index'),array('escape'=>false)); ?>
+        </li >
+
+    </ul>
+</li>
+
+<li class = "<?php echo $nom_cls; ?>">
+    <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Nominee</span><span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level collapse">
+        <li class="<?php echo ($controller == 'nominees' && $action == 'index')?'active' :'' ?>">
+            <?php echo $this->Html->Link('Nominees',
+                array('controller' =>'nominees','action'=> 'index'),array('escape'=>false)); ?>
         </li >
 
     </ul>

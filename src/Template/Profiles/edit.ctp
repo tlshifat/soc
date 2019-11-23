@@ -156,25 +156,3 @@
 </div>
 
 
-
-
-<!--end -->
-<div class="profiles form large-9 medium-8 columns content">
-    <?= $this->Form->create($profile) ?>
-    <fieldset>
-        <legend><?= __('Edit Profile') ?></legend>
-        <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('mobile');
-            echo $this->Form->control('email');
-            echo $this->Form->control('present_address');
-            echo $this->Form->control('permanent_address');
-            echo $this->Form->control('picture');
-            echo $this->Form->control('sgn');
-            echo $this->Form->control('no_of_share');
-            echo $this->Form->control('user_id', ['options' => $users, 'empty' => true]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
