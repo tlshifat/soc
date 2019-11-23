@@ -45,6 +45,13 @@
     }else{
         $template_cls  = '';
     }
+    if($controller == 'bkashDeposits' && ($action == 'add' || $action ==  'view' || $action == 'index')) {
+        $dep_cls = 'active';
+    }else{
+        $dep_cls  = '';
+    }
+
+
 
 
 ?>
@@ -80,6 +87,18 @@
 
     </ul>
 </li>
+
+<li class = "<?php echo $dep_cls; ?>">
+    <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Deposits</span><span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level collapse">
+        <li class="<?php echo ($controller == 'nominees' && $action == 'index')?'active' :'' ?>">
+            <?php echo $this->Html->Link('Bkash Deposits',
+                array('controller' =>'bkashDeposits','action'=> 'index'),array('escape'=>false)); ?>
+        </li >
+
+    </ul>
+</li>
+
 
 <li class = "<?php echo $role_cls; ?>">
     <a href="javascript:void(0)"><i class="fa fa-sitemap"></i><span class="nav-label">Manage Roles</span><span class="fa arrow"></span></a>
