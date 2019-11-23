@@ -13,11 +13,11 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP BoilerPlate';
+$cakeDescription = 'Associations';
 ?>
 <!DOCTYPE html>
 <head>
- 
+
     <!-- Metadata -->
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
