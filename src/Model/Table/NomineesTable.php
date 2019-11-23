@@ -38,6 +38,7 @@ class NomineesTable extends Table
         $this->setTable('nominees');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Users', [
@@ -56,8 +57,7 @@ class NomineesTable extends Table
     {
         $validator
             ->integer('id')
-            ->requirePresence('id', 'create')
-            ->notEmpty('id');
+            ->allowEmpty('id', 'create');
 
         $validator
             ->scalar('name')
