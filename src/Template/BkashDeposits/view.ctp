@@ -1,62 +1,94 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\BkashDeposit $bkashDeposit
+ * @var \App\Model\Entity\User $user
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Bkash Deposit'), ['action' => 'edit', $bkashDeposit->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Bkash Deposit'), ['action' => 'delete', $bkashDeposit->id], ['confirm' => __('Are you sure you want to delete # {0}?', $bkashDeposit->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Bkash Deposits'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Bkash Deposit'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="bkashDeposits view large-9 medium-8 columns content">
-    <h3><?= h($bkashDeposit->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Payment Month') ?></th>
-            <td><?= h($bkashDeposit->payment_month) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Bkash Number') ?></th>
-            <td><?= h($bkashDeposit->bkash_number) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Reference Number') ?></th>
-            <td><?= h($bkashDeposit->reference_number) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Amount') ?></th>
-            <td><?= h($bkashDeposit->amount) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('User') ?></th>
-            <td><?= $bkashDeposit->has('user') ? $this->Html->link($bkashDeposit->user->id, ['controller' => 'Users', 'action' => 'view', $bkashDeposit->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($bkashDeposit->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Date') ?></th>
-            <td><?= h($bkashDeposit->date) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($bkashDeposit->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($bkashDeposit->modified) ?></td>
-        </tr>
-    </table>
-    <div class="row">
-        <h4><?= __('Comment') ?></h4>
-        <?= $this->Text->autoParagraph(h($bkashDeposit->comment)); ?>
+<div id="wrapper">
+
+    <?php echo $this->element('admin/sidebar'); ?>
+
+    <div id="page-wrapper" class="gray-bg">
+        <?php echo $this->element('admin/top_header'); ?>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Bkash Deposits</h2>
+                <ol class="breadcrumb">
+
+                    <li>
+                        <a>Manage Bkash Deposits</a>
+                    </li>
+                    <li class="active">
+                        <strong>Bkash Deposits List</strong>
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title ">
+                            <h5>Bkash Deposits Detail</h5>
+                            <span>
+                                <?= $this->Html->link(__('Back'), ['action' => 'index'],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Back','class' => 'btn btn-success btn-xs pull-right']) ?>
+                                <?= $this->Html->link(__('Edit Profile'), ['action' => 'edit', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-success btn-xs pull-right back-btn']) ?>
+                            </span>
+                        </div>
+
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="m-b-md">
+                                        <h2><?= h($bkashDeposit->payment_month) ?></h2>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Bkash Number ') ?>:</dt> <dd><?= h($bkashDeposit->bkash_number) ?></dd>
+
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Reference Number') ?>:</dt> <dd><?= h($bkashDeposit->reference_number) ?></dd>
+
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Amount') ?>:</dt> <dd><span class=""><?= h($bkashDeposit->amount) ?></span></dd>
+                                    </dl>
+                                </div>
+                                <div class="col-lg-6">
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Date') ?>:</dt> <dd><span class=""><?= h($bkashDeposit->date) ?></span></dd>
+                                    </dl>
+
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Created') ?>:</dt> <dd><?= h($bkashDeposit->created) ?></dd>
+                                    </dl>
+
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Modified') ?>:</dt> <dd><?= h($bkashDeposit->modified) ?></dd>
+
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->element('inner_footer'); ?>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
