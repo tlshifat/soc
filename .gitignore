@@ -1,0 +1,6 @@
+
+# Default ignored files
+/workspace.xml
+/logs/*
+logs/debug.log
+logs/error.log
