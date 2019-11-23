@@ -1,62 +1,94 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Nominee $nominee
+ * @var \App\Model\Entity\User $user
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Nominee'), ['action' => 'edit', $nominee->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Nominee'), ['action' => 'delete', $nominee->id], ['confirm' => __('Are you sure you want to delete # {0}?', $nominee->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Nominees'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Nominee'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="nominees view large-9 medium-8 columns content">
-    <h3><?= h($nominee->name) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Name') ?></th>
-            <td><?= h($nominee->name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Mobile') ?></th>
-            <td><?= h($nominee->mobile) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Email') ?></th>
-            <td><?= h($nominee->email) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Nid') ?></th>
-            <td><?= h($nominee->nid) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Picture') ?></th>
-            <td><?= h($nominee->picture) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Relation Type') ?></th>
-            <td><?= h($nominee->relation_type) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('User') ?></th>
-            <td><?= $nominee->has('user') ? $this->Html->link($nominee->user->id, ['controller' => 'Users', 'action' => 'view', $nominee->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($nominee->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($nominee->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($nominee->modified) ?></td>
-        </tr>
-    </table>
+<div id="wrapper">
+
+    <?php echo $this->element('admin/sidebar'); ?>
+
+    <div id="page-wrapper" class="gray-bg">
+        <?php echo $this->element('admin/top_header'); ?>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Nominees</h2>
+                <ol class="breadcrumb">
+
+                    <li>
+                        <a>Manage Nominees</a>
+                    </li>
+                    <li class="active">
+                        <strong>Nominees List</strong>
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title ">
+                            <h5>Nominee Detail</h5>
+                            <span>
+                                <?= $this->Html->link(__('Back'), ['action' => 'index'],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Back','class' => 'btn btn-success btn-xs pull-right']) ?>
+                                <?= $this->Html->link(__('Edit Profile'), ['action' => 'edit', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-success btn-xs pull-right back-btn']) ?>
+                            </span>
+                        </div>
+
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="m-b-md">
+                                        <h2><?= h($nominee->name) ?></h2>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Mobile') ?>:</dt> <dd><?= h($nominee->mobile) ?></dd>
+
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Email') ?>:</dt> <dd><?= h($nominee->email) ?></dd>
+
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('NID') ?>:</dt> <dd><span class=""><?= h($nominee->nid) ?></span></dd>
+                                    </dl>
+                                </div>
+                                <div class="col-lg-6">
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Picture') ?>:</dt> <dd><span class=""><?= h($nominee->picture) ?></span></dd>
+                                    </dl>
+
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Created') ?>:</dt> <dd><?= h($nominee->created) ?></dd>
+                                    </dl>
+
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Modified') ?>:</dt> <dd><?= h($nominee->modified) ?></dd>
+
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->element('inner_footer'); ?>
+    </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
