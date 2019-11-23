@@ -13,11 +13,11 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP BoilerPlate';
+$cakeDescription = 'Associations';
 ?>
 <!DOCTYPE html>
 <head>
- 
+
     <!-- Metadata -->
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@ $cakeDescription = 'CakePHP BoilerPlate';
 
     <!-- Sweet Alert -->
     <?= $this->Html->css('admin/plugins/sweetalert/sweetalert.css') ?>
-    
+
     <?= $this->Html->css('admin/animate.css') ?>
     <?= $this->Html->css('admin/style.css') ?>
     <?= $this->Html->script('admin/jquery-3.3.1.js');?>
