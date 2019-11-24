@@ -1,6 +1,6 @@
       <div class="footer">
-            
+
             <div>
-                <strong>Copyright</strong> TQM &copy; 2018
+                <strong>Copyright</strong> Shifatul Islam &copy; 2019
             </div>
         </div>

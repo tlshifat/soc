@@ -1,6 +1,6 @@
 <?php
 
-    //print_r($loginuserdata);die;
+
     $controller = strtolower($this->request->params['controller']);
     $action = strtolower($this->request->params['action']);
     if($controller == 'users' && ($action == 'index')) {
@@ -61,13 +61,20 @@
     </a>
 </li>
 
+
+<?php
+
+$methods = $this->Session->read('methods');
+
+if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
+
 <li class = "<?php echo $user_cls; ?>">
     <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Users</span><span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
         <li class="<?php echo ($controller == 'users' && $action == 'index' || $action == 'view')?'active' :'' ?>" >
             <?php echo $this->Html->Link('Users List',array('controller' =>'users','action'=> 'index'),array('escape'=>false)); ?>
         </li>
-         <li class="<?php echo ($controller == 'users' && $action == 'add')?'active' :'' ?>">
+        <li class="<?php echo ($controller == 'users' && $action == 'add')?'active' :'' ?>">
             <?php echo $this->Html->Link('Add User',array('controller' =>'users','action'=> 'add'),array('escape'=>false)); ?>
         </li >
         <li class="<?php echo ($controller == 'profiles' && $action == 'index')?'active' :'' ?>">
@@ -77,6 +84,9 @@
     </ul>
 </li>
 
+<?php }?>
+
+<?php if(in_array('add_nominee',$methods) ||  in_array('edit_nominee',$methods)){ ?>
 <li class = "<?php echo $nom_cls; ?>">
     <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Nominee</span><span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
@@ -87,7 +97,9 @@
 
     </ul>
 </li>
+<?php } ?>
 
+<?php if(in_array('add_deposit',$methods) ||  in_array('edit_deposit',$methods)){ ?>
 <li class = "<?php echo $dep_cls; ?>">
     <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Deposits</span><span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
@@ -98,8 +110,7 @@
 
     </ul>
 </li>
-
-
+<?php } ?>
 <li class = "<?php echo $role_cls; ?>">
     <a href="javascript:void(0)"><i class="fa fa-sitemap"></i><span class="nav-label">Manage Roles</span><span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">

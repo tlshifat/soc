@@ -1,4 +1,4 @@
-# CakePHP BoilerPlate
+# CakePHP Project  for Associations
 
 A basic BoilerPlate template, build in CakePHP3 having the following core functionalities. 
 
@@ -18,6 +18,12 @@ A basic BoilerPlate template, build in CakePHP3 having the following core functi
 4. Admin - Email Templates Management  
 
 5. Admin - Articles/Pages Management
+
+6. Admin - User /Profile Management
+
+7. Admin - User /Deposit  Management
+
+8. Admin - User /Nominee  Management
 ```
 
 ## Installation
@@ -51,6 +57,8 @@ Then visit `http://localhost:8765` to see the welcome page.
 
 Read and edit `config/app.php` and setup the `'Datasources'`, `'EmailTransport'` and any other
 configuration relevant for your application.
+
+Import database cake.sql
 
 
 ## Login Details
