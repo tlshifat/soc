@@ -5,3 +5,4 @@
 logs/debug.log
 logs/error.log
 /tmp/*
+tmp/*
