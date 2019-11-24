@@ -27,6 +27,7 @@ class UsersController extends AppController
 
 
         $action = $this->request->getParam('action');
+
         // The add and tags actions are always allowed to logged in users.
         if (in_array($action, ['add', 'roles'])) {
             //return true;
@@ -281,12 +282,22 @@ class UsersController extends AppController
                             $this->Cookie->delete('rememberMe');
                         }
 
+                        // set permission data for hiding menu start
+                        $userRoleId = TableRegistry::get('Users')->getUserRoleId($user['id']); // Get role assigned to user
+                        $assignedRolePermissions = TableRegistry::get('Users')->getRolePermissions($userRoleId);  // Get permissions based on assigned role
+                        $permissions = explode(",", $assignedRolePermissions);
 
+                        $methods = $permissions;
+
+                        $this->session = $this->request->getSession();
+                        $this->session->write('methods', $methods);
+
+                        //end
                         $this->Auth->setUser($user);
                         //return $this->redirect($this->Auth->redirectUrl());
                         $message = 'Logged in successfully.';
                         $this->Flash->success(__($message));
-                        return $this->redirect(['controller'=>'users']);
+                        return $this->redirect(['controller'=>'users','action'=>'dashboard']);
 
                     }
                 }
@@ -439,6 +450,16 @@ class UsersController extends AppController
     {
         $this->Flash->success('You are now logged out.');
         return $this->redirect($this->Auth->logout());
+    }
+
+    public function dashboard()
+    {
+        $userPerm = $this->getUserAssignedPermissions('view_user_list');
+        // Get all users, in association with the Roles table.
+        $users = $this->paginate($this->Users->find('all')->contain(['Roles']));
+        $this->set(compact('users'));
+        $this->set('_serialize', ['users']);
+
     }
 
 
