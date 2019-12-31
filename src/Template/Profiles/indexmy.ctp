@@ -12,14 +12,14 @@
         <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Profiles</h2>
+                <h2>My Profile</h2>
                 <ol class="breadcrumb">
 
                     <li>
-                        <a>Manage Profiles</a>
+                        <a>Manage My Profiles</a>
                     </li>
                     <li class="active">
-                        <strong>Profile List</strong>
+                        <strong>Profile </strong>
                     </li>
                 </ol>
             </div>
@@ -30,10 +30,10 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title ">
-                            <h5>Profiles Listing</h5>
+                            <h5>My Profile </h5>
                             <span>
-                                <?php echo $this->Html->link('Add New',
-                                    ['controller' => 'profiles','action' => 'add'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
+                                <?php echo $this->Html->link('Add My Profile',
+                                    ['controller' => 'profiles','action' => 'addmy'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
                             </span>
                         </div>
 
@@ -52,7 +52,7 @@
                                         <th scope="col"><?= $this->Paginator->sort('picture') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('sgn') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('no_of_share') ?></th>
-                                        <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
+
 
                                         <th scope="col" class="actions"><?= __('Actions') ?></th>
                                     </tr>
@@ -76,7 +76,7 @@
                                                 <td><?= h($profile->picture) ?></td>
                                                 <td><?= h($profile->sgn) ?></td>
                                                 <td><?= h($profile->no_of_share) ?></td>
-                                                <td><?= h($profile->user_id) ?></td>
+                                            
 <!--                                                <td>--><?//= h($dateCreatedFormat) ?><!--</td>-->
 <!--                                                <td>--><?//= h($dateModifiedFormat) ?><!--</td>-->
 

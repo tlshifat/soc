@@ -75,7 +75,7 @@ class AppController extends Controller
         ]);
 
         // Allow the display action so our PagesController continues to work. Also enable the read only actions.
-        $this->Auth->allow(['display', 'view', 'index','add', 'edit','indexmy']);
+        $this->Auth->allow(['display', 'view', 'index','add', 'edit','indexmy','addmy']);
 
 
         //Get site url configured in bootstrap.
@@ -160,5 +160,9 @@ class AppController extends Controller
             return false;
         }
     } // end function getUserAssignedPermissions()
+
+    public function _userId(){
+        return $this->Auth->user()['id'];
+    }
 
 }
