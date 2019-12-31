@@ -95,7 +95,7 @@ if(in_array('view_profile_list',$methods) ){ ?>
         <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Profiles</span><span class="fa arrow"></span></a>
         <ul class="nav nav-second-level collapse">
 
-            <li class="<?php echo ($controller == 'profiles' && $action == 'index')?'active' :'' ?>">
+            <li <?php if(!in_array('index_profile',$methods)){echo 'style="display:none" ';}?> class=" <?php  echo ($controller == 'profiles' && $action == 'index')?'active' :'' ?>">
                 <?php echo $this->Html->Link('Profile List',array('controller' =>'profiles','action'=> 'index'),array('escape'=>false)); ?>
             </li >
             <li class="<?php echo ($controller == 'profiles' && $action == 'indexmy')?'active' :'' ?>">

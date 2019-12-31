@@ -26,7 +26,7 @@ class ProfilesController extends AppController
      */
     public function index()
     {
-        $userPerm = $this->getUserAssignedPermissions('view_profile_list');
+        $userPerm = $this->getUserAssignedPermissions('index_profile');
         $this->paginate = [
             'contain' => ['Users']
         ];
