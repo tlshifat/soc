@@ -96,6 +96,10 @@ class ProfilesTable extends Table
             ->integer('no_of_share')
             ->allowEmpty('no_of_share');
 
+        $validator
+            ->integer('status')
+            ->allowEmpty('status');
+
         return $validator;
     }
 

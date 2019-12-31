@@ -52,6 +52,7 @@
                                         <th scope="col"><?= $this->Paginator->sort('picture') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('sgn') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('no_of_share') ?></th>
+                                        <th scope="col"><?= $this->Paginator->sort('status') ?></th>
 
 
                                         <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -61,6 +62,13 @@
                                     <?php if(count($profiles)>0) {
                                         foreach ($profiles as $profile):
 
+                                            if($profile['status'] == 1){
+                                                $status = 'Active';
+                                                $statusClass = 'btn btn-primary btn-xs';
+                                            }elseif($profile['status'] == 2){
+                                                $status = 'Inactive';
+                                                $statusClass = 'btn btn-warning btn-xs';
+                                            }
                                             $date = strtotime($profile['created']);
                                             $dateCreatedFormat = date("Y-m-d", $date);
                                             $date = strtotime($profile['modified']);
@@ -76,6 +84,7 @@
                                                 <td><?= h($profile->picture) ?></td>
                                                 <td><?= h($profile->sgn) ?></td>
                                                 <td><?= h($profile->no_of_share) ?></td>
+                                                <td><b><?php echo $this->Html->link($status,'javascript:void(0)',['_full' => false,'class' => "".' '.$statusClass.' '."manage_status_".$user['id'],'id' =>$user['id']] ); ?></b></td>
 
 <!--                                                <td>--><?//= h($dateCreatedFormat) ?><!--</td>-->
 <!--                                                <td>--><?//= h($dateModifiedFormat) ?><!--</td>-->
