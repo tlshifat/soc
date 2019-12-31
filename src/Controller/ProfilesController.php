@@ -13,6 +13,12 @@ use App\Controller\AppController;
 class ProfilesController extends AppController
 {
 
+
+    public function initialize()
+    {
+        parent::initialize();
+        // Add the action to the allowed actions list.
+    }
     /**
      * Index method
      *
@@ -20,6 +26,7 @@ class ProfilesController extends AppController
      */
     public function index()
     {
+        $userPerm = $this->getUserAssignedPermissions('view_profile_list');
         $this->paginate = [
             'contain' => ['Users']
         ];
@@ -31,10 +38,11 @@ class ProfilesController extends AppController
     //My profile edit add
     public function indexmy()
     {
+        $userPerm = $this->getUserAssignedPermissions('indexmy_profile');
         $this->paginate = [
             'contain' => ['Users']
         ];
-        $profiles = $this->paginate($this->Profiles->find('all')->where(['user_id'=> $this->_userId]));
+        $profiles = $this->paginate($this->Profiles->find('all')->where(['user_id'=> $this->Auth->user()['id']]));
 
         $this->set(compact('profiles'));
     }

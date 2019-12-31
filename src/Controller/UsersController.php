@@ -257,6 +257,7 @@ class UsersController extends AppController
 
         $this->viewBuilder()->layout('login');
         if ($this->request->is('post')) {
+
             try {
                 $user = $this->Auth->identify();
                 if ($user) {
@@ -454,10 +455,12 @@ class UsersController extends AppController
 
     public function dashboard()
     {
-        $userPerm = $this->getUserAssignedPermissions('view_user_list');
+       // $userPerm = $this->getUserAssignedPermissions('view_user_list');
         // Get all users, in association with the Roles table.
         $users = $this->paginate($this->Users->find('all')->contain(['Roles']));
-        $this->set(compact('users'));
+        $user_info = $this->Auth->user();
+        $profile_info =TableRegistry::get('Profiles')->find()->where(['user_id'=>$user_info['id']])->first();
+        $this->set(compact('users','user_info','profile_info'));
         $this->set('_serialize', ['users']);
 
     }

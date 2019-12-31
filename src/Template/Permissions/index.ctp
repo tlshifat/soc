@@ -9,14 +9,14 @@
     <?php echo $this->element('admin/sidebar'); ?>
 
     <div id="page-wrapper" class="gray-bg">
-       <?php echo $this->element('admin/top_header'); ?>    
+       <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
                 <h2>Permissions</h2>
                 <ol class="breadcrumb">
-                    
+
                     <li>
-                        <a>Manage Permissions</a>
+                        <a>Manage Permissions [function_controller]</a>
                     </li>
                     <li class="active">
                         <strong>User Permissions</strong>
@@ -32,15 +32,15 @@
                         <div class="ibox-title ">
                             <h5>Permissions Listing</h5>
                             <span>
-                                <?php echo $this->Html->link('Add New', ['controller' => 'permissions','action' => 'add'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>  
+                                <?php echo $this->Html->link('Add New', ['controller' => 'permissions','action' => 'add'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
                             </span>
                         </div>
-                        
+
 
                         <div class="ibox-content">
 
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover dataTables-list" >        
+                                <table class="table table-striped table-bordered table-hover dataTables-list" >
                                     <thead>
                                         <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('permission') ?></th>
@@ -51,7 +51,7 @@
 
                                     <tbody>
                                         <?php if(count($permissions)>0) {
-                                            foreach ($permissions as $permission): 
+                                            foreach ($permissions as $permission):
 
                                                 $date = strtotime($permission['created']);
                                                 $dateCreatedFormat = date("Y-m-d", $date);
@@ -68,12 +68,12 @@
                                                     <?// Common class 'deleteData' has been used, which will open the confirmation popup. Clicked on Delete icon, will call the common Delete function declared in /js/admin/custom.js ?>
                                                 </td>
                                             </tr>
-                                            <?php endforeach; 
+                                            <?php endforeach;
                                             } else { ?>
                                                     <tr>
                                                         <td colspan="4"><?= __('No records found') ?></td>
                                                     </tr>
-                                            <?php 
+                                            <?php
                                             }?>
 
                                     </tbody>

@@ -66,6 +66,7 @@
 
 $methods = $this->Session->read('methods');
 
+
 if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
 
 <li class = "<?php echo $user_cls; ?>">
@@ -77,9 +78,7 @@ if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
         <li class="<?php echo ($controller == 'users' && $action == 'add')?'active' :'' ?>">
             <?php echo $this->Html->Link('Add User',array('controller' =>'users','action'=> 'add'),array('escape'=>false)); ?>
         </li >
-        <li class="<?php echo ($controller == 'profiles' && $action == 'index')?'active' :'' ?>">
-            <?php echo $this->Html->Link('Profiles',array('controller' =>'profiles','action'=> 'index'),array('escape'=>false)); ?>
-        </li >
+
 
     </ul>
 </li>
@@ -90,7 +89,7 @@ if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
 
 $methods = $this->Session->read('methods');
 
-if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
+if(in_array('view_profile_list',$methods) ){ ?>
 
     <li class = "<?php echo $user_cls; ?>">
         <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Profiles</span><span class="fa arrow"></span></a>
@@ -134,6 +133,8 @@ if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
     </ul>
 </li>
 <?php } ?>
+<!--view_roles_list-->
+<?php if(in_array('view_roles_list',$methods)){ ?>
 <li class = "<?php echo $role_cls; ?>">
     <a href="javascript:void(0)"><i class="fa fa-sitemap"></i><span class="nav-label">Manage Roles</span><span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
@@ -145,7 +146,10 @@ if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
         </li >
     </ul>
 </li>
+<?php } ?>
 
+<!--view_permission_list-->
+<?php if(in_array('view_permission_list',$methods)){ ?>
 <li class = "<?php echo $permission_cls; ?>">
     <a href="javascript:void(0)"><i class="fa fa-sitemap"></i><span class="nav-label">Manage Permissions</span><span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
@@ -157,7 +161,7 @@ if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
         </li >
     </ul>
 </li>
-
+<?php } ?>
 <!--<li class = "--><?php //echo $page_cls; ?><!--">-->
 <!--    <a href="javascript:void(0)"><i class="fa fa-files-o"></i><span class="nav-label">Manage Pages</span><span class="fa arrow"></span></a>-->
 <!--    <ul class="nav nav-second-level collapse">-->

@@ -42,6 +42,9 @@ class UsersTable extends Table
         $this->addBehavior('Timestamp');
         $this->buildPermissionRelationship();
 
+        $this->hasOne('Profiles', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**
@@ -192,12 +195,11 @@ class UsersTable extends Table
             return $roleName['role'];
         } catch (\PDOException $e) {
             $message = $e->getMessage();
-            $this->Flash->error($message);
-            return $this->redirect(['controller' => 'Users','action' => 'index']);
+
+
         } catch (\Exception $e) {
             $message = $e->getMessage();
-            $this->Flash->error($message);
-            return $this->redirect(['controller' => 'Users','action' => 'index']);
+
         }
     }
 
@@ -218,12 +220,12 @@ class UsersTable extends Table
             return $roleName['slug'];
         } catch (\PDOException $e) {
             $message = $e->getMessage();
-            $this->Flash->error($message);
-            return $this->redirect(['controller' => 'Users','action' => 'index']);
+          //  $this->Flash->error($message);
+           // return $this->redirect(['controller' => 'Users','action' => 'index']);
         } catch (\Exception $e) {
             $message = $e->getMessage();
-            $this->Flash->error($message);
-            return $this->redirect(['controller' => 'Users','action' => 'index']);
+         //   $this->Flash->error($message);
+           // return $this->redirect(['controller' => 'Users','action' => 'index']);
         }
     }
 
@@ -250,12 +252,12 @@ class UsersTable extends Table
             }
         } catch (\PDOException $e) {
             $message = $e->getMessage();
-            $this->Flash->error($message);
-            return $this->redirect(['controller' => 'Users','action' => 'index']);
+            //$this->Flash->error($message);
+            //return $this->redirect(['controller' => 'Users','action' => 'index']);
         } catch (\Exception $e) {
             $message = $e->getMessage();
-            $this->Flash->error($message);
-            return $this->redirect(['controller' => 'Users','action' => 'index']);
+            //$this->Flash->error($message);
+            //return $this->redirect(['controller' => 'Users','action' => 'index']);
         }
 
     }

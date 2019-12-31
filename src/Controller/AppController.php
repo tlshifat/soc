@@ -90,7 +90,6 @@ class AppController extends Controller
 
         if($this->Auth->user()){
             $user = $this->Auth->user();
-            $this->_userId = $user['id'];
             $this->set('loginuserdata', $user);
         }
 
@@ -127,6 +126,7 @@ class AppController extends Controller
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function getUserAssignedPermissions($method) {
+
         $user = $this->Auth->user();
         if(isset($user)) {
             try {
@@ -139,7 +139,7 @@ class AppController extends Controller
                         return true;
                     }else {
                         $this->Flash->error(__("You don't have permissions to access this page. Please contact Admin."));
-                        return $this->redirect($this->referer());
+                        return $this->redirect(['controller' => 'Users','action' => 'dashboard']);
                     }
                 } else { // end if(isset($userRoleId))
                     return false;
