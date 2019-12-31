@@ -76,14 +76,14 @@
                                                 <td><?= h($profile->picture) ?></td>
                                                 <td><?= h($profile->sgn) ?></td>
                                                 <td><?= h($profile->no_of_share) ?></td>
-                                            
+
 <!--                                                <td>--><?//= h($dateCreatedFormat) ?><!--</td>-->
 <!--                                                <td>--><?//= h($dateModifiedFormat) ?><!--</td>-->
 
                                                 <td class="actions">
-                                                    <?= $this->Html->link(__(''), ['action' => 'view', $profile->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
-                                                    <?= $this->Html->link(__(''), ['action' => 'edit', $profile->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-primary btn-circle fa fa-list']) ?>
-                                                    <?= $this->Html->link(__(''), "javascript:void(0);",['type' =>'button','data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Delete','class' => 'btn btn-warning btn-circle fa fa-times deleteData', 'id'=> 'users_'.$profile->id]) ?>
+                                                    <?= $this->Html->link(__(''), ['action' => 'viewmy', $profile->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
+                                                    <?= $this->Html->link(__(''), ['action' => 'editmy', $profile->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-primary btn-circle fa fa-list']) ?>
+<!--
                                                     <?// Common class 'deleteData' has been used, which will open the confirmation popup. Clicked on Delete icon, will call the common Delete function declared in /js/admin/custom.js ?>
                                                 </td>
                                             </tr>
