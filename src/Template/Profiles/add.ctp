@@ -124,6 +124,17 @@
                                 <div class="hr-line-dashed"></div>
                                 <div class ="row">
                                     <div class="col-md-6">
+                                        <div class="form-group"><label class="col-sm-12">Users</label>
+                                            <div class="col-sm-12">
+                                                <?php echo $this->Form->control('user_id', ['options' => $users,'class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class ="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-sm-12">
                                             </div>

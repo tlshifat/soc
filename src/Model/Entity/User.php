@@ -1,6 +1,6 @@
 <?php
 namespace App\Model\Entity;
-use Cake\Auth\DefaultPasswordHasher; 
+use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 
 /**
@@ -52,6 +52,12 @@ class User extends Entity
             return $hasher->hash($value);
         }
     }
+
+    public  function  _getName(){
+        return $this->first_name.' '.$this->last_name;
+    }
+
+
 
 
 }

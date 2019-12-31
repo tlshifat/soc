@@ -24,8 +24,8 @@ class ProfilesController extends AppController
             'contain' => ['Users']
         ];
         $profiles = $this->paginate($this->Profiles);
-
-        $this->set(compact('profiles'));
+        $users = $this->Profiles->Users->find('list', ['limit' => 200]);
+        $this->set(compact('profiles','users'));
     }
 
     //My profile edit add

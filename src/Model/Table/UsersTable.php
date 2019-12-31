@@ -36,7 +36,7 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->setTable('users');
-        $this->setDisplayField('id');
+        $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -58,7 +58,7 @@ class UsersTable extends Table
 
         $validator
             ->notEmpty('first_name', 'Please enter your First name');
-        
+
         $validator
             ->notEmpty('last_name', 'Please enter your Last name');
 
@@ -87,7 +87,7 @@ class UsersTable extends Table
                     'message' => 'Sorry, password and confirm password does not matched'
                 ]
             ]);
-          
+
         return $validator;
     }
 
@@ -111,7 +111,7 @@ class UsersTable extends Table
      * @param string|null $token user token.
      * @return \Cake\Http\Response|null Redirects to index.
      */
-    
+
     public function getUserid($token){
         $id = null;
         $response = $this->find()->select(['id'])->where(['status !=' => 3,'token' => $token,'token_status !=' => 2 ])->hydrate(false)->first();
@@ -138,7 +138,7 @@ class UsersTable extends Table
             $message = $e->getMessage();
             $this->Flash->error($message);
             return $this->redirect(['controller' => 'Users','action' => 'index']);
-        }   
+        }
     }
 
     /**
@@ -158,10 +158,11 @@ class UsersTable extends Table
                 $assignedRoles = array();
                 foreach($userRole['roles'] as $key => $role) {
                     $assignedRoles[] = $role['id'];
-                }        
+                }
                 return $user_roles = implode(",",$assignedRoles);
 
             }
+            $user_roles ="";
             return $user_roles;
         } catch (\PDOException $e) {
             $message = $e->getMessage();
@@ -171,7 +172,7 @@ class UsersTable extends Table
             $message = $e->getMessage();
             $this->Flash->error($message);
             return $this->redirect(['controller' => 'Users','action' => 'index']);
-        } 
+        }
     }
 
     /**
@@ -186,9 +187,9 @@ class UsersTable extends Table
             $query = TableRegistry::get('Roles')
                     ->find()
                     ->select('role')
-                    ->where(['id' => $id]); 
+                    ->where(['id' => $id]);
             $roleName = $query->first();
-            return $roleName['role'];                    
+            return $roleName['role'];
         } catch (\PDOException $e) {
             $message = $e->getMessage();
             $this->Flash->error($message);
@@ -197,8 +198,8 @@ class UsersTable extends Table
             $message = $e->getMessage();
             $this->Flash->error($message);
             return $this->redirect(['controller' => 'Users','action' => 'index']);
-        }            
-    } 
+        }
+    }
 
     /**
      * Finds the getPermissionSlug by its name
@@ -212,9 +213,9 @@ class UsersTable extends Table
             $query = TableRegistry::get('Permissions')
                     ->find()
                     ->select('slug')
-                    ->where(['id' => $id]); 
+                    ->where(['id' => $id]);
             $roleName = $query->first();
-            return $roleName['slug'];                    
+            return $roleName['slug'];
         } catch (\PDOException $e) {
             $message = $e->getMessage();
             $this->Flash->error($message);
@@ -223,8 +224,8 @@ class UsersTable extends Table
             $message = $e->getMessage();
             $this->Flash->error($message);
             return $this->redirect(['controller' => 'Users','action' => 'index']);
-        }            
-    } 
+        }
+    }
 
     /**
      * Finds the permissions based on assigned role
@@ -236,17 +237,17 @@ class UsersTable extends Table
     {
         try {
             $response = TableRegistry::get('RolesPermissions')->find()->select(['permission_id'])->where(['role_id' => $id])->toArray();
-            
+
             if(count($response) > 0 ){
                 $assignedPermissions = array();
                 foreach($response as $key => $permission) {
-                    $permission_name = TableRegistry::get('Users')->getPermissionSlug($permission['permission_id']); 
+                    $permission_name = TableRegistry::get('Users')->getPermissionSlug($permission['permission_id']);
                     $assignedPermissions[] = $permission_name;
-                }        
+                }
                 return $user_permissions = implode(",",$assignedPermissions);
             }else {
-                return false; 
-            }        
+                return false;
+            }
         } catch (\PDOException $e) {
             $message = $e->getMessage();
             $this->Flash->error($message);
@@ -255,9 +256,9 @@ class UsersTable extends Table
             $message = $e->getMessage();
             $this->Flash->error($message);
             return $this->redirect(['controller' => 'Users','action' => 'index']);
-        }   
-           
-    }    
+        }
+
+    }
 
 
 }
