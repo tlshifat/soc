@@ -83,7 +83,7 @@
                                                 <td><?= h($profile->picture) ?></td>
                                                 <td><?= h($profile->sgn) ?></td>
                                                 <td><?= h($profile->no_of_share) ?></td>
-                                                
+
                                                 <td><b><?php echo $this->Html->link($status,'javascript:void(0)',['_full' => false,'class' => "".' '.$statusClass.' '."manage_status_".$user['id'],'id' =>$user['id']] ); ?></b></td>
 <!--                                                <td>--><?//= h($dateCreatedFormat) ?><!--</td>-->
 <!--                                                <td>--><?//= h($dateModifiedFormat) ?><!--</td>-->

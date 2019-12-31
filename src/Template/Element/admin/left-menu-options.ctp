@@ -98,7 +98,7 @@ if(in_array('view_profile_list',$methods) ){ ?>
             <li <?php if(!in_array('index_profile',$methods)){echo 'style="display:none" ';}?> class=" <?php  echo ($controller == 'profiles' && $action == 'index')?'active' :'' ?>">
                 <?php echo $this->Html->Link('Profile List',array('controller' =>'profiles','action'=> 'index'),array('escape'=>false)); ?>
             </li >
-            <li class="<?php echo ($controller == 'profiles' && $action == 'indexmy')?'active' :'' ?>">
+            <li <?php if(!in_array('indexmy_profile',$methods)){echo 'style="display:none" ';}?> class="<?php echo ($controller == 'profiles' && $action == 'indexmy')?'active' :'' ?>">
                 <?php echo $this->Html->Link('My Profile ',array('controller' =>'profiles','action'=> 'indexmy'),array('escape'=>false)); ?>
             </li >
 
