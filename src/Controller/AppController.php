@@ -75,7 +75,7 @@ class AppController extends Controller
         ]);
 
         // Allow the display action so our PagesController continues to work. Also enable the read only actions.
-        $this->Auth->allow(['display', 'view', 'index','add', 'edit']);
+        $this->Auth->allow(['display', 'view', 'index','add', 'edit','indexmy']);
 
 
         //Get site url configured in bootstrap.
@@ -87,23 +87,24 @@ class AppController extends Controller
             $this->set(compact('remembered_data'));
         }
 
-        
-        if($this->Auth->user()){ 
+
+        if($this->Auth->user()){
             $user = $this->Auth->user();
+            $this->_userId = $user['id'];
             $this->set('loginuserdata', $user);
-        } 
+        }
 
         $action = $this->request->getParam('action');
 
         if ($action != 'login') {
             if ($this->Auth->user()) {
-                
+
             }else{
-                $this->redirect(['controller'=> 'Users' ,'action'=> 'login']); 
-            }  
+                $this->redirect(['controller'=> 'Users' ,'action'=> 'login']);
+            }
 
         }
-        
+
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
@@ -126,11 +127,11 @@ class AppController extends Controller
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function getUserAssignedPermissions($method) {
-        $user = $this->Auth->user(); 
+        $user = $this->Auth->user();
         if(isset($user)) {
             try {
                 $userRoleId = TableRegistry::get('Users')->getUserRoleId($user['id']); // Get role assigned to user
-              
+
                 if(isset($userRoleId)) {
                     $assignedRolePermissions = TableRegistry::get('Users')->getRolePermissions($userRoleId);  // Get permissions based on assigned role
                     $permissions = explode(",", $assignedRolePermissions);
@@ -138,9 +139,9 @@ class AppController extends Controller
                         return true;
                     }else {
                         $this->Flash->error(__("You don't have permissions to access this page. Please contact Admin."));
-                        return $this->redirect($this->referer()); 
-                    } 
-                } else { // end if(isset($userRoleId)) 
+                        return $this->redirect($this->referer());
+                    }
+                } else { // end if(isset($userRoleId))
                     return false;
                 }
 
@@ -152,7 +153,7 @@ class AppController extends Controller
                 $message = $e->getMessage();
                 $this->Flash->error($message);
                 return $this->redirect(['controller' => 'Users','action' => 'index']);
-            }  
+            }
 
 
         }else { // end if(isset($user))

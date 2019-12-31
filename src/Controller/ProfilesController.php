@@ -28,6 +28,17 @@ class ProfilesController extends AppController
         $this->set(compact('profiles'));
     }
 
+    //My profile edit add
+    public function indexmy()
+    {
+        $this->paginate = [
+            'contain' => ['Users']
+        ];
+        $profiles = $this->paginate($this->Profiles->find('all')->where(['user_id'=> $this->_userId]));
+
+        $this->set(compact('profiles'));
+    }
+
     /**
      * View method
      *
