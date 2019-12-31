@@ -1,8 +1,5 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
- */
+
 ?>
 <div id="wrapper">
 
@@ -12,6 +9,13 @@
        <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
+                <br>    <br>
+
+                <?php if(empty($profile_info)){?>
+                    <div class="alert alert-danger "> Profile not found.Please complete your profile.</div>
+                <?php }?>
+                <h1>Hello <?php echo $user_info['first_name'].' '.$user_info['last_name']; ?></h1>
+
                 <h2>Welcome to Associations Admin Panel !!</h2>
                 <ol class="breadcrumb">
 

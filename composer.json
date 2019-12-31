@@ -1,6 +1,6 @@
 {
     "name": "cakephp/app",
-    "description": "CakePHP BoilerPlate app",
+    "description": "Association App",
     "homepage": "https://cakephp.org",
     "type": "project",
     "license": "MIT",

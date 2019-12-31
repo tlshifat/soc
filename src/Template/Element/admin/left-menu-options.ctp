@@ -66,6 +66,7 @@
 
 $methods = $this->Session->read('methods');
 
+
 if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
 
 <li class = "<?php echo $user_cls; ?>">
@@ -77,14 +78,35 @@ if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
         <li class="<?php echo ($controller == 'users' && $action == 'add')?'active' :'' ?>">
             <?php echo $this->Html->Link('Add User',array('controller' =>'users','action'=> 'add'),array('escape'=>false)); ?>
         </li >
-        <li class="<?php echo ($controller == 'profiles' && $action == 'index')?'active' :'' ?>">
-            <?php echo $this->Html->Link('Profiles',array('controller' =>'profiles','action'=> 'index'),array('escape'=>false)); ?>
-        </li >
+
 
     </ul>
 </li>
 
 <?php }?>
+
+<?php
+
+$methods = $this->Session->read('methods');
+
+if(in_array('view_profile_list',$methods) ){ ?>
+
+    <li class = "<?php echo $user_cls; ?>">
+        <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Profiles</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse">
+
+            <li <?php if(!in_array('index_profile',$methods)){echo 'style="display:none" ';}?> class=" <?php  echo ($controller == 'profiles' && $action == 'index')?'active' :'' ?>">
+                <?php echo $this->Html->Link('Profile List',array('controller' =>'profiles','action'=> 'index'),array('escape'=>false)); ?>
+            </li >
+            <li <?php if(!in_array('indexmy_profile',$methods)){echo 'style="display:none" ';}?> class="<?php echo ($controller == 'profiles' && $action == 'indexmy')?'active' :'' ?>">
+                <?php echo $this->Html->Link('My Profile ',array('controller' =>'profiles','action'=> 'indexmy'),array('escape'=>false)); ?>
+            </li >
+
+        </ul>
+    </li>
+
+<?php }?>
+
 
 <?php if(in_array('add_nominee',$methods) ||  in_array('edit_nominee',$methods)){ ?>
 <li class = "<?php echo $nom_cls; ?>">
@@ -111,6 +133,8 @@ if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
     </ul>
 </li>
 <?php } ?>
+<!--view_roles_list-->
+<?php if(in_array('view_roles_list',$methods)){ ?>
 <li class = "<?php echo $role_cls; ?>">
     <a href="javascript:void(0)"><i class="fa fa-sitemap"></i><span class="nav-label">Manage Roles</span><span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
@@ -122,7 +146,10 @@ if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
         </li >
     </ul>
 </li>
+<?php } ?>
 
+<!--view_permission_list-->
+<?php if(in_array('view_permission_list',$methods)){ ?>
 <li class = "<?php echo $permission_cls; ?>">
     <a href="javascript:void(0)"><i class="fa fa-sitemap"></i><span class="nav-label">Manage Permissions</span><span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
@@ -134,36 +161,36 @@ if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
         </li >
     </ul>
 </li>
+<?php } ?>
+<!--<li class = "--><?php //echo $page_cls; ?><!--">-->
+<!--    <a href="javascript:void(0)"><i class="fa fa-files-o"></i><span class="nav-label">Manage Pages</span><span class="fa arrow"></span></a>-->
+<!--    <ul class="nav nav-second-level collapse">-->
+<!--        <li class="--><?php //echo ($controller == 'articles' && $action == 'index' || $action == 'view')?'active' :'' ?><!--" >-->
+<!--            --><?php //echo $this->Html->Link('Pages List',array('controller' =>'articles','action'=> 'index'),array('escape'=>false)); ?>
+<!--        </li>-->
+<!--         <li class="--><?php //echo ($controller == 'articles' && $action == 'add')?'active' :'' ?><!--">-->
+<!--            --><?php //echo $this->Html->Link('Add Page',array('controller' =>'articles','action'=> 'add'),array('escape'=>false)); ?>
+<!--        </li >-->
+<!--    </ul>-->
+<!--</li>-->
 
-<li class = "<?php echo $page_cls; ?>">
-    <a href="javascript:void(0)"><i class="fa fa-files-o"></i><span class="nav-label">Manage Pages</span><span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level collapse">
-        <li class="<?php echo ($controller == 'articles' && $action == 'index' || $action == 'view')?'active' :'' ?>" >
-            <?php echo $this->Html->Link('Pages List',array('controller' =>'articles','action'=> 'index'),array('escape'=>false)); ?>
-        </li>
-         <li class="<?php echo ($controller == 'articles' && $action == 'add')?'active' :'' ?>">
-            <?php echo $this->Html->Link('Add Page',array('controller' =>'articles','action'=> 'add'),array('escape'=>false)); ?>
-        </li >
-    </ul>
-</li>
+<!--<li class = "--><?php //echo $template_cls; ?><!--">-->
+<!--    <a href="javascript:void(0)"><i class="fa fa-desktop"></i><span class="nav-label">Email Templates</span><span class="fa arrow"></span></a>-->
+<!--    <ul class="nav nav-second-level collapse">-->
+<!--        <li class="--><?php //echo ($controller == 'emailTemplates' && $action == 'index' || $action == 'view')?'active' :'' ?><!--" >-->
+<!--            --><?php //echo $this->Html->Link('Templates List',array('controller' =>'emailTemplates','action'=> 'index'),array('escape'=>false)); ?>
+<!--        </li>-->
+<!--    </ul>-->
+<!--</li>-->
 
-<li class = "<?php echo $template_cls; ?>">
-    <a href="javascript:void(0)"><i class="fa fa-desktop"></i><span class="nav-label">Email Templates</span><span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level collapse">
-        <li class="<?php echo ($controller == 'emailTemplates' && $action == 'index' || $action == 'view')?'active' :'' ?>" >
-            <?php echo $this->Html->Link('Templates List',array('controller' =>'emailTemplates','action'=> 'index'),array('escape'=>false)); ?>
-        </li>
-    </ul>
-</li>
-
-<li class = "<?php echo $template_cls; ?>">
-    <a href="javascript:void(0)"><i class="fa fa-question"></i><span class="nav-label">FAQ Management</span><span class="fa arrow"></span></a>
-     <ul class="nav nav-second-level collapse">
-        <li class="<?php echo ($controller == 'articles' && $action == 'index' || $action == 'view')?'active' :'' ?>" >
-            <?php echo $this->Html->Link('FAQ List',array('controller' =>'faq','action'=> 'index'),array('escape'=>false)); ?>
-        </li>
-         <li class="<?php echo ($controller == 'articles' && $action == 'add')?'active' :'' ?>">
-            <?php echo $this->Html->Link('Add FAQ',array('controller' =>'faq','action'=> 'add'),array('escape'=>false)); ?>
-        </li >
-    </ul>
-</li>
+<!--<li class = "--><?php //echo $template_cls; ?><!--">-->
+<!--    <a href="javascript:void(0)"><i class="fa fa-question"></i><span class="nav-label">FAQ Management</span><span class="fa arrow"></span></a>-->
+<!--     <ul class="nav nav-second-level collapse">-->
+<!--        <li class="--><?php //echo ($controller == 'articles' && $action == 'index' || $action == 'view')?'active' :'' ?><!--" >-->
+<!--            --><?php //echo $this->Html->Link('FAQ List',array('controller' =>'faq','action'=> 'index'),array('escape'=>false)); ?>
+<!--        </li>-->
+<!--         <li class="--><?php //echo ($controller == 'articles' && $action == 'add')?'active' :'' ?><!--">-->
+<!--            --><?php //echo $this->Html->Link('Add FAQ',array('controller' =>'faq','action'=> 'add'),array('escape'=>false)); ?>
+<!--        </li >-->
+<!--    </ul>-->
+<!--</li>-->
