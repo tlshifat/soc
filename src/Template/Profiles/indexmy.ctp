@@ -31,10 +31,12 @@
                     <div class="ibox float-e-margins">
                         <div class="ibox-title ">
                             <h5>My Profile </h5>
+                            <?php if(count($profiles) < 1) {?>
                             <span>
                                 <?php echo $this->Html->link('Add My Profile',
                                     ['controller' => 'profiles','action' => 'addmy'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
                             </span>
+                            <?php } ?>
                         </div>
 
 
