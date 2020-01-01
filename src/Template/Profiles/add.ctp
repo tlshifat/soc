@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\User $user
  */
 $this->Form->unlockField('images');
+$this->Form->unlockField('sgn');
 ?>
 <div id="wrapper">
 
@@ -105,9 +106,9 @@ $this->Form->unlockField('images');
                                 <div class="hr-line-dashed"></div>
                                 <div class ="row">
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12"> Picture </label>
+                                        <div class="form-group"><label class="col-sm-12">Picture</label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('picture', ['class' => 'form-control','placeholder' => 'Picture', 'required' => true, 'label' => false]); ?>
+                                                <?php echo $this->Form->control('images', ['type'=>'file','class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +116,7 @@ $this->Form->unlockField('images');
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12">Signature</label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('sgn', ['class' => 'form-control','placeholder' => 'Signature', 'label' => false]); ?>
+                                                <?php echo $this->Form->control('sgn', ['type'=>'file','class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -132,13 +133,7 @@ $this->Form->unlockField('images');
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12">Image File</label>
-                                            <div class="col-sm-12">
-                                                <?php echo $this->Form->control('images', ['type'=>'file','class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
-                                            </div>
-                                        </div>
-                                    </div>
+
 
                                 </div>
 

@@ -86,21 +86,32 @@ class ProfilesController extends AppController
             if (!file_exists($upLoadsDirectory)) {
                 mkdir($upLoadsDirectory, 0777, true);
             }
+
+            //for picture
             $fileParams = $this->request->data['images'];
             $info = pathinfo($fileParams['name']);
-            $path = md5($fileParams['name']) . '-' . uniqid() . '.' . $info['extension'];
-            if (!move_uploaded_file($this->request->data['images']['tmp_name'], $upLoadsDirectory.'/' . $path)) {
-                var_dump('Cant move');
+            $pathPicture = md5($fileParams['name']) . '-' . uniqid() . '.' . $info['extension'];
+            if (!move_uploaded_file($this->request->data['images']['tmp_name'], $upLoadsDirectory.'/' . $pathPicture)) {
+                var_dump('Cant move picture ');
                 die;
             }
             unset($this->request->data['images']);
-            //ssss
-
+            //end
+            //start signature
+            $fileParams = $this->request->data['sgn'];
+            $info = pathinfo($fileParams['name']);
+            $pathSign = md5($fileParams['name']) . '-' . uniqid() . '.' . $info['extension'];
+            if (!move_uploaded_file($this->request->data['sgn']['tmp_name'], $upLoadsDirectory.'/' . $pathSign)) {
+                var_dump('Cant move signature ');
+                die;
+            }
+            unset($this->request->data['sgn']);
+            //end
             $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
-
+            $profile->picture = $pathPicture;
+            $profile->sgn = $pathSign;
             if ($this->Profiles->save($profile)) {
                 $this->Flash->success(__('The profile has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The profile could not be saved. Please, try again.'));
