@@ -80,8 +80,8 @@
                                                 <td><?= h($profile->email) ?></td>
                                                 <td><?= h($profile->present_address) ?></td>
                                                 <td><?= h($profile->permanent_address) ?></td>
-                                                <td><?= h($profile->picture) ?></td>
-                                                <td><?= h($profile->sgn) ?></td>
+                                                <td><?php echo $this->Html->image('profile/'.$profile->picture, ['alt' => 'Profile Img','class' => 'img-circle minimize']); ?></td>
+                                                <td><?php echo $this->Html->image('profile/'.$profile->sgn, ['alt' => 'Signature Img','class' => 'img-circle minimize']); ?></td>
                                                 <td><?= h($profile->no_of_share) ?></td>
 
                                                 <td><b><?php echo $this->Html->link($status,'javascript:void(0)',['_full' => false,'class' => "".' '.$statusClass.' '."manage_status_".$user['id'],'id' =>$user['id']] ); ?></b></td>
@@ -120,3 +120,9 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
+<style>
+    .minimize{
+        height: 70px;
+        width: 100px;
+    }
+</style
