@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property string $picture
  * @property string $sgn
  * @property int $no_of_share
+ * @property int $status
  * @property int $user_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -42,6 +43,7 @@ class Profile extends Entity
         'picture' => true,
         'sgn' => true,
         'no_of_share' => true,
+        'status' => true,
         'user_id' => true,
         'created' => true,
         'modified' => true,

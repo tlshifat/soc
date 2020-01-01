@@ -13,6 +13,12 @@ use App\Controller\AppController;
 class ProfilesController extends AppController
 {
 
+
+    public function initialize()
+    {
+        parent::initialize();
+        // Add the action to the allowed actions list.
+    }
     /**
      * Index method
      *
@@ -20,10 +26,23 @@ class ProfilesController extends AppController
      */
     public function index()
     {
+        $userPerm = $this->getUserAssignedPermissions('index_profile');
         $this->paginate = [
             'contain' => ['Users']
         ];
         $profiles = $this->paginate($this->Profiles);
+        $users = $this->Profiles->Users->find('list', ['limit' => 200]);
+        $this->set(compact('profiles','users'));
+    }
+
+    //My profile edit add
+    public function indexmy()
+    {
+        $userPerm = $this->getUserAssignedPermissions('indexmy_profile');
+        $this->paginate = [
+            'contain' => ['Users']
+        ];
+        $profiles = $this->paginate($this->Profiles->find('all')->where(['user_id'=> $this->Auth->user()['id']]));
 
         $this->set(compact('profiles'));
     }
@@ -44,6 +63,14 @@ class ProfilesController extends AppController
         $this->set('profile', $profile);
     }
 
+    public function viewmy($id = null)
+    {
+        $profile = $this->Profiles->get($id, [
+            'contain' => ['Users']
+        ]);
+
+        $this->set('profile', $profile);
+    }
     /**
      * Add method
      *
@@ -65,6 +92,22 @@ class ProfilesController extends AppController
         $this->set(compact('profile', 'users'));
     }
 
+    public function addmy()
+    {
+        $profile = $this->Profiles->newEntity();
+        if ($this->request->is('post')) {
+            $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
+            $profile->user_id = $this->_userId();
+            if ($this->Profiles->save($profile)) {
+                $this->Flash->success(__('The profile has been saved.'));
+
+                return $this->redirect(['action' => 'indexmy']);
+            }
+            $this->Flash->error(__('The profile could not be saved. Please, try again.'));
+        }
+        $users = $this->Profiles->Users->find('list', ['limit' => 200]);
+        $this->set(compact('profile', 'users'));
+    }
     /**
      * Edit method
      *
@@ -83,6 +126,25 @@ class ProfilesController extends AppController
                 $this->Flash->success(__('The profile has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The profile could not be saved. Please, try again.'));
+        }
+        $users = $this->Profiles->Users->find('list', ['limit' => 200]);
+        $this->set(compact('profile', 'users'));
+    }
+
+    public function editmy($id = null)
+    {
+        $profile = $this->Profiles->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
+            $profile->user_id = $this->_userId();
+            if ($this->Profiles->save($profile)) {
+                $this->Flash->success(__('The profile has been saved.'));
+
+                return $this->redirect(['action' => 'indexmy']);
             }
             $this->Flash->error(__('The profile could not be saved. Please, try again.'));
         }

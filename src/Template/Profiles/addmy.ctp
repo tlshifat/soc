@@ -12,14 +12,14 @@
         <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Profiles</h2>
+                <h2>My Profile</h2>
                 <ol class="breadcrumb">
 
                     <li>
-                        <a>Manage Profiles</a>
+                        <a>Manage My Profile</a>
                     </li>
                     <li class="active">
-                        <strong>Profiles List</strong>
+                        <strong>Profile</strong>
                     </li>
                 </ol>
             </div>
@@ -122,16 +122,7 @@
 
 
                                 <div class="hr-line-dashed"></div>
-                                <div class ="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12">Users</label>
-                                            <div class="col-sm-12">
-                                                <?php echo $this->Form->control('user_id', ['options' => $users,'class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                </div>
 
                                 <div class ="row">
                                     <div class="col-md-6">
@@ -144,7 +135,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="top-btns">
-                                                <?php echo $this->Html->link('Back', ['controller' => 'profiles','action' => 'index'],['type'=>'button','_full' => false,'class' => 'btn btn-white pull-right m-l-sm']); ?>
+                                                <?php echo $this->Html->link('Back', ['controller' => 'profiles','action' => 'indexmy'],['type'=>'button','_full' => false,'class' => 'btn btn-white pull-right m-l-sm']); ?>
                                                 <?= $this->Form->button('Reset', ['type'=>'reset','_full' => false,'class' => 'btn btn-white pull-right m-l-sm']); ?>
                                                 <?= $this->Form->button('Save Changes',['class' => 'btn btn-primary pull-right m-l-sm', 'type' => 'submit']); ?>
 

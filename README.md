@@ -67,3 +67,10 @@ Import database cake.sql
 User: admin@localhost.com
 Pass: 123456
 ```
+
+#Permission 
+- convention : function_name_controller
+- check permission in everycontrollers function 
+
+#Session user
+$this->Auth->user()

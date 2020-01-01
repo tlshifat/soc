@@ -127,6 +127,28 @@
                                 <div class="hr-line-dashed"></div>
                                 <div class ="row">
                                     <div class="col-md-6">
+                                        <div class="form-group"><label class="col-sm-12">Users </label>
+                                            <div class="col-sm-12">
+                                                <?php echo $this->Form->input('user_id', ['options'=>$users,'class' => 'form-control','placeholder' => 'Last Name', 'label' => false]); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="col-sm-12 ">Status</label>
+                                            <div class="col-sm-12">
+                                                <?php $disabled = (isset($this->request->data['id']) ? 'true' : 'false');  ?>
+                                                <?php echo $this->Form->input('status', ['disabled' => $disabled, 'class' => 'form-control','placeholder' => 'Email', 'required' => true, 'label' => false]); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class ="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-sm-12">
                                             </div>
