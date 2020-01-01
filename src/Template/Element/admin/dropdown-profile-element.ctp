@@ -1,5 +1,5 @@
 <div class="dropdown profile-element main-profile-img"> <span>
-        <?php echo $this->Html->image('default.png', ['alt' => 'Profile Img','class' => 'img-circle']); ?>
+        <?php echo $this->Html->image('profile/df.jpeg', ['alt' => 'Profile Img','class' => 'img-circle']); ?>
          </span>
     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
         <span class="clear"> <span class="block m-t-xs capitalize"> <strong class="font-bold"><?php echo $loginuserdata['first_name'].'&nbsp;'. $loginuserdata['last_name']; ?> </strong>

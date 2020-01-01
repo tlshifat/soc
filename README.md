@@ -74,3 +74,6 @@ Pass: 123456
 
 #Session user
 $this->Auth->user()
+
+#Image issue 
+<?php echo $this->Html->image('profile/df.jpeg', ['alt' => 'Profile Img','class' => 'img-circle']); ?>
