@@ -75,7 +75,7 @@
                                             ?>
                                             <tr class="gradeX_<?php echo $profile['id']; ?>">
 
-                                                <td class = "capitalize"><?= ucfirst(h($profile->name))?></td>
+                                                <td class = "capitalize"><?= ucfirst(h($profile->user->first_name.' '.$profile->user->last_name))?></td>
                                                 <td><?= h($profile->mobile) ?></td>
                                                 <td><?= h($profile->email) ?></td>
                                                 <td><?= h($profile->present_address) ?></td>

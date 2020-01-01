@@ -46,7 +46,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
-                                        <h2><?= h($profile->name) ?></h2>
+                                        <h2><?= h($profile->user->first_name.' '.$profile->user->last_name) ?></h2>
                                     </div>
 
 

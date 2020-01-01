@@ -42,7 +42,7 @@ $this->Form->unlockField('sgn');
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12">Name</label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('name', ['class' => 'form-control','placeholder' => 'First Name', 'required' => true, 'label' => false]); ?>
+                                                <?php echo $profile->user->first_name.' '.$profile->user->last_name ; ?>
                                             </div>
                                         </div>
                                     </div>

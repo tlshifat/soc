@@ -116,8 +116,9 @@ class ProfilesController extends AppController
             }
             $this->Flash->error(__('The profile could not be saved. Please, try again.'));
         }
+        $status =array(""=>"Select","1"=>"Approved","2"=>"Not Approved");
         $users = $this->Profiles->Users->find('list', ['limit' => 200]);
-        $this->set(compact('profile', 'users'));
+        $this->set(compact('profile', 'users','status'));
     }
 
     public function addmy()
@@ -146,7 +147,7 @@ class ProfilesController extends AppController
     public function edit($id = null)
     {
         $profile = $this->Profiles->get($id, [
-            'contain' => []
+            'contain' => ['Users']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             // copy paste
