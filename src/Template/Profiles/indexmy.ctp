@@ -4,6 +4,12 @@
  * @var \App\Model\Entity\Profile[]|\Cake\Collection\CollectionInterface $profiles
  */
 ?>
+<style>
+    .minimize{
+        height: 100px;
+        width: 100px;
+    }
+</style>
 <div id="wrapper">
 
     <?php echo $this->element('admin/sidebar'); ?>
@@ -65,10 +71,10 @@
                                         foreach ($profiles as $profile):
 
                                             if($profile['status'] == 1){
-                                                $status = 'Active';
+                                                $status = 'Approved';
                                                 $statusClass = 'btn btn-primary btn-xs';
                                             }elseif($profile['status'] == 2){
-                                                $status = 'Inactive';
+                                                $status = 'Not Approved';
                                                 $statusClass = 'btn btn-warning btn-xs';
                                             }
                                             $date = strtotime($profile['created']);
@@ -78,15 +84,15 @@
                                             ?>
                                             <tr class="gradeX_<?php echo $profile['id']; ?>">
 
-                                                <td class = "capitalize"><?= ucfirst(h($profile->name))?></td>
+                                                <td class = "capitalize"><?= ucfirst(h($profile->user->first_name.' '.$profile->user->last_name))?></td>
                                                 <td><?= h($profile->mobile) ?></td>
                                                 <td><?= h($profile->email) ?></td>
                                                 <td><?= h($profile->present_address) ?></td>
                                                 <td><?= h($profile->permanent_address) ?></td>
-                                                <td><?= h($profile->picture) ?></td>
-                                                <td><?= h($profile->sgn) ?></td>
+                                                <td><?php echo $this->Html->image('profile/'.$profile->picture, ['alt' => 'Profile Img','class' => 'img-circle minimize']); ?></td>
+                                                <td><?php echo $this->Html->image('profile/'.$profile->sgn, ['alt' => 'Signature Img','class' => 'img-circle minimize']); ?></td>
                                                 <td><?= h($profile->no_of_share) ?></td>
-                                                <td><b><?php echo $this->Html->link($status,'javascript:void(0)',['_full' => false,'class' => "".' '.$statusClass.' '."manage_status_".$user['id'],'id' =>$user['id']] ); ?></b></td>
+                                                <td><b><?php echo $this->Html->link($status,'javascript:void(0)',['_full' => false,'class' => "".' '.$statusClass.' '."manage_status_"] ); ?></b></td>
 
 <!--                                                <td>--><?//= h($dateCreatedFormat) ?><!--</td>-->
 <!--                                                <td>--><?//= h($dateModifiedFormat) ?><!--</td>-->
@@ -123,3 +129,5 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
+
+
