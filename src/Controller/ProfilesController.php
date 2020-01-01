@@ -200,8 +200,9 @@ class ProfilesController extends AppController
             }
             $this->Flash->error(__('The profile could not be saved. Please, try again.'));
         }
+        $status =array(""=>"Select","1"=>"Approved","2"=>"Not Approved");
         $users = $this->Profiles->Users->find('list', ['limit' => 200]);
-        $this->set(compact('profile', 'users'));
+        $this->set(compact('profile', 'users','status'));
     }
 
     public function editmy($id = null)
@@ -234,12 +235,17 @@ class ProfilesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $profile = $this->Profiles->get($id);
-        if ($this->Profiles->delete($profile)) {
-            $this->Flash->success(__('The profile has been deleted.'));
-        } else {
-            $this->Flash->error(__('The profile could not be deleted. Please, try again.'));
+        //if $profile not found, redirect back to list view
+        if (empty($profile)) {
+            $this->Flash->error(__('User not found'));
+            return $this->redirect(['action' => 'index']);
         }
 
+        if ($this->Profiles->delete($profile)) {
+            return $this->response->withType("application/json")->withStringBody(json_encode(array('status' => 'deleted'))); die;
+        } else {
+            return $this->response->withType("application/json")->withStringBody(json_encode(array('status' => 'error'))); die;
+        }
         return $this->redirect(['action' => 'index']);
     }
 }

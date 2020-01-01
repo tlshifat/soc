@@ -62,10 +62,10 @@
                                     <?php if(count($profiles)>0) {
                                         foreach ($profiles as $profile):
                                             if($profile['status'] == 1){
-                                                $status = 'Active';
+                                                $status = 'Approved';
                                                 $statusClass = 'btn btn-primary btn-xs';
                                             }elseif($profile['status'] == 2){
-                                                $status = 'Inactive';
+                                                $status = 'Not Approved';
                                                 $statusClass = 'btn btn-warning btn-xs';
                                             }
                                             $date = strtotime($profile['created']);
@@ -91,7 +91,7 @@
                                                 <td class="actions">
                                                     <?= $this->Html->link(__(''), ['action' => 'view', $profile->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
                                                     <?= $this->Html->link(__(''), ['action' => 'edit', $profile->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-primary btn-circle fa fa-list']) ?>
-                                                    <?= $this->Html->link(__(''), "javascript:void(0);",['type' =>'button','data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Delete','class' => 'btn btn-warning btn-circle fa fa-times deleteData', 'id'=> 'users_'.$profile->id]) ?>
+                                                    <?= $this->Html->link(__(''), "javascript:void(0);",['type' =>'button','data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Delete','class' => 'btn btn-warning btn-circle fa fa-times deleteData', 'id'=> 'profiles_'.$profile->id]) ?>
                                                     <?// Common class 'deleteData' has been used, which will open the confirmation popup. Clicked on Delete icon, will call the common Delete function declared in /js/admin/custom.js ?>
                                                 </td>
                                             </tr>

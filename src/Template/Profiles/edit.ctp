@@ -135,7 +135,7 @@ $this->Form->unlockField('sgn');
                                         <div class="form-group"><label class="col-sm-12 ">Status</label>
                                             <div class="col-sm-12">
                                                 <?php $disabled = (isset($this->request->data['id']) ? 'true' : 'false');  ?>
-                                                <?php echo $this->Form->input('status', ['disabled' => $disabled, 'class' => 'form-control','placeholder' => 'Email', 'required' => true, 'label' => false]); ?>
+                                                <?php echo $this->Form->input('status', ['options'=>$status,'disabled' => $disabled, 'class' => 'form-control','placeholder' => 'Email', 'required' => true, 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -156,7 +156,7 @@ $this->Form->unlockField('sgn');
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="top-btns">
-                                                <?php echo $this->Html->link('Back', ['controller' => 'users','action' => 'index'],['type'=>'button','_full' => false,'class' => 'btn btn-white pull-right m-l-sm']); ?>
+                                                <?php echo $this->Html->link('Back', ['action' => 'index'],['type'=>'button','_full' => false,'class' => 'btn btn-white pull-right m-l-sm']); ?>
                                                 <?= $this->Form->button('Reset', ['type'=>'reset','_full' => false,'class' => 'btn btn-white pull-right m-l-sm']); ?>
                                                 <?= $this->Form->button('Save Changes',['class' => 'btn btn-primary pull-right m-l-sm', 'type' => 'submit']); ?>
 
