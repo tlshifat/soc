@@ -2,7 +2,11 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
+
+<td><?php echo $this->Html->image('profile/'.$profile->picture, ['alt' => 'Profile Img','class' => 'img-circle minimize']); ?></td>
+<td><?php echo $this->Html->image('profile/'.$profile->sgn, ['alt' => 'Signature Img','class' => 'img-circle minimize']); ?></td>
  */
+
 ?>
 <div id="wrapper">
 
@@ -38,6 +42,7 @@
                         </div>
 
                         <div class="ibox-content">
+
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
@@ -47,6 +52,25 @@
 
                                 </div>
                             </div>
+
+                            <!--                            for picture and sign-->
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Picture') ?>:</dt>
+                                        <dd><?php echo $this->Html->image('profile/'.$profile->picture, ['alt' => 'Profile Img','class' => 'img-circle minimize']); ?></dd>
+
+                                    </dl>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Signature') ?>:</dt>
+                                        <dd><span class=""><?php echo $this->Html->image('profile/'.$profile->sgn, ['alt' => 'Signature Img','class' => 'img-circle minimize']); ?></span></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <!--                            end-->
                             <div class="row">
                                 <div class="col-lg-6">
                                     <dl class="dl-horizontal">
@@ -76,6 +100,7 @@
                                     </dl>
                                 </div>
                             </div>
+
                         </div>
 
 
@@ -92,3 +117,9 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
+<style>
+.minimize{
+    height: 100px;
+    width: 100px;
+}
+</style>
