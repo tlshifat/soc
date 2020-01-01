@@ -80,7 +80,24 @@ class ProfilesController extends AppController
     {
         $profile = $this->Profiles->newEntity();
         if ($this->request->is('post')) {
+            $dir = \Cake\Core\Configure::read('App.wwwRoot');
+            $upLoadsDirectory = $dir.'/img/profile';
+
+            if (!file_exists($upLoadsDirectory)) {
+                mkdir($upLoadsDirectory, 0777, true);
+            }
+            $fileParams = $this->request->data['images'];
+            $info = pathinfo($fileParams['name']);
+            $path = md5($fileParams['name']) . '-' . uniqid() . '.' . $info['extension'];
+            if (!move_uploaded_file($this->request->data['images']['tmp_name'], $upLoadsDirectory.'/' . $path)) {
+                var_dump('Cant move');
+                die;
+            }
+            unset($this->request->data['images']);
+            //ssss
+
             $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
+
             if ($this->Profiles->save($profile)) {
                 $this->Flash->success(__('The profile has been saved.'));
 

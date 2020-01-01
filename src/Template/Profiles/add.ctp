@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
  */
+$this->Form->unlockField('images');
 ?>
 <div id="wrapper">
 
@@ -35,7 +36,8 @@
                         <div class="ibox-content tab-content">
                             <div id="tab-1" class="tab-pane active">
 
-                                <?= $this->Form->create($profile, ['id' => 'Admin-AddUser']) ?>
+                                <?= $this->Form->create($profile, ['type' => 'file','id' => 'Admin-AddUser']) ?>
+
                                 <div class ="row">
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12"> Name</label>
@@ -127,6 +129,13 @@
                                         <div class="form-group"><label class="col-sm-12">Users</label>
                                             <div class="col-sm-12">
                                                 <?php echo $this->Form->control('user_id', ['options' => $users,'class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="col-sm-12">Image File</label>
+                                            <div class="col-sm-12">
+                                                <?php echo $this->Form->control('images', ['type'=>'file','class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
