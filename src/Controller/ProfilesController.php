@@ -149,7 +149,50 @@ class ProfilesController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            // copy paste
+            $dir = \Cake\Core\Configure::read('App.wwwRoot');
+            $upLoadsDirectory = $dir.'/img/profile';
+
+            if (!file_exists($upLoadsDirectory)) {
+                mkdir($upLoadsDirectory, 0777, true);
+            }
+            //end :)
+            //for picture
+            $fileParams = $this->request->data['images'];
+            $info = pathinfo($fileParams['name']);
+            $pathPicture = md5($fileParams['name']) . '-' . uniqid() . '.' . $info['extension'];
+
+            if(!empty($pathPicture) && !empty($this->request->data['images']['name'])){
+                $imageTrue ='ok';
+                if (!move_uploaded_file($this->request->data['images']['tmp_name'], $upLoadsDirectory.'/' . $pathPicture)) {
+                    var_dump('Cant move picture ');
+                    die;
+                }
+            }
+
+            unset($this->request->data['images']);
+            //end
+            //start signature
+            $fileParams = $this->request->data['sgn'];
+            $info = pathinfo($fileParams['name']);
+            $pathSign = md5($fileParams['name']) . '-' . uniqid() . '.' . $info['extension'];
+
+            if(!empty($pathSign) && !empty($this->request->data['sgn']['name'])){
+                $signTrue ='ok';
+            if (!move_uploaded_file($this->request->data['sgn']['tmp_name'], $upLoadsDirectory.'/' . $pathSign)) {
+                var_dump('Cant move signature ');
+                die;
+            }
+            }
+            unset($this->request->data['sgn']);
+            //end
+
             $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
+
+            if(!empty($pathPicture) && !empty($imageTrue)){$profile->picture = $pathPicture;}
+
+            if(!empty($pathSign) && !empty($signTrue)){$profile->sgn = $pathSign;}
+
             if ($this->Profiles->save($profile)) {
                 $this->Flash->success(__('The profile has been saved.'));
 
