@@ -1,14 +1,10 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Profile $profile
- */
-?>
-<?php
-/**
- * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
  */
+$this->Form->unlockField('nid');
+$this->Form->unlockField('picture');
 ?>
 <div id="wrapper">
 
@@ -41,7 +37,7 @@
                         <div class="ibox-content tab-content">
                             <div id="tab-1" class="tab-pane active">
 
-                                <?= $this->Form->create($nominee, ['id' => 'Admin-EditUser']) ?>
+                                <?= $this->Form->create($nominee, ['type' => 'file','id' => 'Admin-AddUser']) ?>
                                 <div class ="row">
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12">Name</label>
@@ -73,9 +69,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12">Picture </label>
+                                        <div class="form-group"><label class="col-sm-12">Relation Type </label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('picture', ['class' => 'form-control','placeholder' => 'Last Name', 'label' => false]); ?>
+                                                <?php echo $this->Form->input('relation_type', ['options'=>$relations,'class' => 'form-control','placeholder' => 'Last Name', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -86,20 +82,24 @@
                                 <div class="hr-line-dashed"></div>
                                 <div class ="row">
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12">NID </label>
+                                        <div class="form-group"><label class="col-sm-12">Picture </label>
+                                            <?php echo $this->Html->image('nominee/'.$nominee->picture, ['id'=>'img1','alt' => 'Nominee Img','class' => 'img-circle minimize']); ?>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('nid', ['class' => 'form-control','placeholder' => 'Last Name', 'label' => false]); ?>
+                                                <?php echo $this->Form->control('picture', ['id'=>'pic','type'=>'file','class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12">Relation Type </label>
+                                        <div class="form-group"><label class="col-sm-12">NID </label>
+                                            <?php echo $this->Html->image('nominee/'.$nominee->nid, ['id'=>'img2','alt' => 'Nid Img','class' => 'img-circle minimize']); ?>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('relation_type', ['class' => 'form-control','placeholder' => 'Last Name', 'label' => false]); ?>
+                                                <?php echo $this->Form->control('nid', ['id'=>'sgn','type'=>'file','class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
+
+
 
 
                                 </div>
@@ -135,6 +135,44 @@
         <?php echo $this->element('inner_footer'); ?>
     </div>
 </div>
+<style>
+    .minimize{
+        height: 100px;
+        width: 100px;
+        margin-left: 50px;
+    }
+</style>
+<script type="application/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function(e) {
+                $('#img1').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function readURL1(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#img2').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#pic").change(function() {
+        readURL(this);
+    });
+
+    $("#sgn").change(function() {
+        readURL1(this);
+    });
+</script>
 
 

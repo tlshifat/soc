@@ -114,7 +114,47 @@ class NomineesController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            // copy paste
+            $dir = \Cake\Core\Configure::read('App.wwwRoot');
+            $upLoadsDirectory = $dir.'/img/nominee';
+
+            if (!file_exists($upLoadsDirectory)) {
+                mkdir($upLoadsDirectory, 0777, true);
+            }
+            //end :)
+            //for picture
+            $fileParams = $this->request->data['picture'];
+            $info = pathinfo($fileParams['name']);
+            $pathPicture = md5($fileParams['name']) . '-' . uniqid() . '.' . $info['extension'];
+
+            if(!empty($pathPicture) && !empty($this->request->data['picture']['name'])){
+                $imageTrue ='ok';
+                if (!move_uploaded_file($this->request->data['picture']['tmp_name'], $upLoadsDirectory.'/' . $pathPicture)) {
+                    var_dump('Cant move picture ');
+                    die;
+                }
+            }
+
+            unset($this->request->data['picture']);
+            //end
+            //start signature
+            $fileParams = $this->request->data['nid'];
+            $info = pathinfo($fileParams['name']);
+            $pathSign = md5($fileParams['name']) . '-' . uniqid() . '.' . $info['extension'];
+
+            if(!empty($pathSign) && !empty($this->request->data['nid']['name'])){
+                $signTrue ='ok';
+                if (!move_uploaded_file($this->request->data['nid']['tmp_name'], $upLoadsDirectory.'/' . $pathSign)) {
+                    var_dump('Cant move nid ');
+                    die;
+                }
+            }
+            unset($this->request->data['nid']);
+            //end
             $nominee = $this->Nominees->patchEntity($nominee, $this->request->getData());
+            if(!empty($pathPicture) && !empty($imageTrue)){$nominee->picture = $pathPicture;}
+
+            if(!empty($pathSign) && !empty($signTrue)){$nominee->nid = $pathSign;}
             if ($this->Nominees->save($nominee)) {
                 $this->Flash->success(__('The nominee has been saved.'));
 
@@ -123,7 +163,12 @@ class NomineesController extends AppController
             $this->Flash->error(__('The nominee could not be saved. Please, try again.'));
         }
         $users = $this->Nominees->Users->find('list', ['limit' => 200]);
-        $this->set(compact('nominee', 'users'));
+        $relations =array(""=>"Select",
+            "Father"=>"Father",
+            "Mother"=>"Mother",
+            "Brother"=>"Brother",
+            "Sister"=>"Sister");
+        $this->set(compact('nominee', 'users','relations'));
     }
 
     /**
