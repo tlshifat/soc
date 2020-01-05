@@ -337,14 +337,22 @@ class NomineesController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        //$this->request->allowMethod(['post', 'delete']);
         $nominee = $this->Nominees->get($id);
-        if ($this->Nominees->delete($nominee)) {
-            $this->Flash->success(__('The nominee has been deleted.'));
-        } else {
-            $this->Flash->error(__('The nominee could not be deleted. Please, try again.'));
+
+        if (empty($nominee)) {
+            $this->Flash->error(__('Nominee not found'));
+            return $this->redirect(['action' => 'indexmy']);
         }
 
-        return $this->redirect(['action' => 'index']);
+        if ($this->Nominees->delete($nominee)) {
+            return $this->response->withType("application/json")->withStringBody(json_encode(array('status' => 'deleted')));
+        } else {
+            return $this->response->withType("application/json")->withStringBody(json_encode(array('status' => 'error')));
+        }
+
+        return $this->redirect(['action' => 'indexmy']);
     }
+
+
 }

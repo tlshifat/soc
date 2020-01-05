@@ -14,14 +14,14 @@ $this->Form->unlockField('picture');
         <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Nominees</h2>
+                <h2>Edit Nominees</h2>
                 <ol class="breadcrumb">
 
                     <li>
-                        <a>Manage Nominees</a>
+                        <a>Edit Nominees</a>
                     </li>
                     <li class="active">
-                        <strong>Nominees List</strong>
+                        <strong>My Nominees List</strong>
                     </li>
                 </ol>
             </div>
