@@ -71,7 +71,7 @@
                                                 <td><?php echo $this->Html->image('nominee/'.$nominee->picture, ['alt' => 'Picture ','class' => 'img-circle minimize']); ?></td>
                                                 <td><?= h($nominee->relation_type) ?></td>
                                                 <td class="actions">
-                                                    <?= $this->Html->link(__(''), ['action' => 'view', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
+                                                    <?= $this->Html->link(__(''), ['action' => 'viewmy', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
                                                     <?= $this->Html->link(__(''), ['action' => 'edit', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-primary btn-circle fa fa-list']) ?>
                                                     <?= $this->Html->link(__(''), "javascript:void(0);",['type' =>'button','data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Delete','class' => 'btn btn-warning btn-circle fa fa-times deleteData', 'id'=> 'users_'.$nominee->id]) ?>
                                                     <?// Common class 'deleteData' has been used, which will open the confirmation popup. Clicked on Delete icon, will call the common Delete function declared in /js/admin/custom.js ?>
