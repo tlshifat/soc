@@ -67,8 +67,8 @@
                                                 <td class = "capitalize"><?= ucfirst(h($nominee->name))?></td>
                                                 <td><?= h($nominee->mobile) ?></td>
                                                 <td><?= h($nominee->email) ?></td>
-                                                <td><?= h($nominee->nid) ?></td>
-                                                <td><?= h($nominee->picture) ?></td>
+                                                <td><?php echo $this->Html->image('nominee/'.$nominee->nid, ['alt' => 'Nid Img','class' => 'img-circle minimize']); ?></td>
+                                                <td><?php echo $this->Html->image('nominee/'.$nominee->picture, ['alt' => 'Picture ','class' => 'img-circle minimize']); ?></td>
                                                 <td><?= h($nominee->relation_type) ?></td>
                                                 <td class="actions">
                                                     <?= $this->Html->link(__(''), ['action' => 'view', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
@@ -96,3 +96,9 @@
         <?php echo $this->element('inner_footer'); ?>
     </div>
 </div>
+<style>
+    .minimize{
+        height: 70px;
+        width: 100px;
+    }
+</style
