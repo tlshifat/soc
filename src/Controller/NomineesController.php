@@ -93,7 +93,12 @@ class NomineesController extends AppController
             $this->Flash->error(__('The nominee could not be saved. Please, try again.'));
         }
         $users = $this->Nominees->Users->find('list', ['limit' => 200]);
-        $this->set(compact('nominee', 'users'));
+        $relations =array(""=>"Select",
+            "Father"=>"Father",
+            "Mother"=>"Mother",
+            "Brother"=>"Brother",
+            "Sister"=>"Sister");
+        $this->set(compact('nominee', 'users','relations'));
     }
 
     /**

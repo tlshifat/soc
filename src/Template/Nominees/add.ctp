@@ -92,7 +92,7 @@ $this->Form->unlockField('picture');
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12">Relation Type</label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('relation_type', ['class' => 'form-control','placeholder' => 'No. Of Share', 'label' => false]); ?>
+                                                <?php echo $this->Form->input('relation_type', ['options'=>$relations,'class' => 'form-control','placeholder' => 'No. Of Share', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
