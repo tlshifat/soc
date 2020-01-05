@@ -18,6 +18,9 @@
         <legend><?= __('Add Bkash Deposit') ?></legend>
         <?php
             echo $this->Form->control('date');
+            //payment tyoe
+            // payment for
+            //
             echo $this->Form->control('payment_month');
             echo $this->Form->control('bkash_number');
             echo $this->Form->control('reference_number');
