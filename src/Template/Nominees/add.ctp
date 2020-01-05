@@ -3,6 +3,8 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
  */
+$this->Form->unlockField('nid');
+$this->Form->unlockField('picture');
 ?>
 <div id="wrapper">
 
@@ -35,7 +37,7 @@
                         <div class="ibox-content tab-content">
                             <div id="tab-1" class="tab-pane active">
 
-                                <?= $this->Form->create($nominee, ['id' => 'Admin-AddUser']) ?>
+                                <?= $this->Form->create($nominee, ['type' => 'file','id' => 'Admin-AddUser']) ?>
                                 <div class ="row">
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12"> Name</label>
@@ -69,7 +71,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12">NID</label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('nid', ['class' => 'form-control','placeholder' => 'Nid', 'label' => false]); ?>
+                                                <?php echo $this->Form->control('nid', ['type'=>'file','class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +84,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12"> Picture </label>
                                             <div class="col-sm-12">
-                                                <?php echo $this->Form->input('picture', ['class' => 'form-control','placeholder' => 'Permanent Address', 'required' => true, 'label' => false]); ?>
+                                                <?php echo $this->Form->control('picture', ['type'=>'file','class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -100,6 +102,26 @@
 
 
                                 <div class="hr-line-dashed"></div>
+                                <div class ="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="col-sm-12"> User </label>
+                                            <div class="col-sm-12">
+                                                <?php echo $this->Form->control('user_id', ['options' => $users,'class' => 'form-control','placeholder' => 'Present address', 'label' => false]); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="form-group"><label class="col-sm-12">Relation Type</label>-->
+<!--                                            <div class="col-sm-12">-->
+<!--                                                --><?php //echo $this->Form->input('relation_type', ['class' => 'form-control','placeholder' => 'No. Of Share', 'label' => false]); ?>
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
                                 <div class ="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
