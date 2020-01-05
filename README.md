@@ -77,3 +77,8 @@ $this->Auth->user()
 
 #Image issue 
 <?php echo $this->Html->image('profile/df.jpeg', ['alt' => 'Profile Img','class' => 'img-circle']); ?>
+
+
+#common delet
+
+users_1 equivalent to model/delete/1 -> Return should be json in controller

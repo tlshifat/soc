@@ -30,9 +30,9 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title ">
-                            <h5>Profile Detail</h5>
+                            <h5>My Profile Detail</h5>
                             <span>
-                                <?= $this->Html->link(__('Back'), ['action' => 'index'],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Back','class' => 'btn btn-success btn-xs pull-right']) ?>
+                                <?= $this->Html->link(__('Back'), ['action' => 'indexmy'],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Back','class' => 'btn btn-success btn-xs pull-right']) ?>
                                 <?= $this->Html->link(__('Edit My Profile'), ['action' => 'editmy', $profile->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-success btn-xs pull-right back-btn']) ?>
                             </span>
                         </div>
@@ -41,12 +41,31 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
-                                        <h2><?= h($profile->name) ?></h2>
+                                        <h2><?= h($profile->user->first_name.' '.$profile->user->last_name) ?></h2>
                                     </div>
 
 
                                 </div>
                             </div>
+                            <!--                            for picture and sign-->
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Picture') ?>:</dt>
+                                        <dd><?php echo $this->Html->image('profile/'.$profile->picture, ['alt' => 'Profile Img','class' => 'img-circle minimize']); ?></dd>
+
+                                    </dl>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Signature') ?>:</dt>
+                                        <dd><span class=""><?php echo $this->Html->image('profile/'.$profile->sgn, ['alt' => 'Signature Img','class' => 'img-circle minimize']); ?></span></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <!--                            end-->
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <dl class="dl-horizontal">
@@ -92,3 +111,9 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
+<style>
+    .minimize{
+        height: 100px;
+        width: 100px;
+    }
+</style>
