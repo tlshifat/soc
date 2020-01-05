@@ -28,6 +28,18 @@ class NomineesController extends AppController
         $this->set(compact('nominees'));
     }
 
+    public function indexmy()
+    {
+        //open it when need strict permission
+        //$userPerm = $this->getUserAssignedPermissions('indexmy_nominee');
+        $this->paginate = [
+            'contain' => ['Users']
+        ];
+        $nominees = $this->paginate($this->Nominees->find('all')->where(['user_id'=> $this->Auth->user()['id']]));
+        $this->set(compact('nominees'));
+    }
+
+
     /**
      * View method
      *

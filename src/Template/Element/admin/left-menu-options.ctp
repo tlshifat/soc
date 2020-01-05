@@ -120,8 +120,8 @@ if(in_array('view_nominee_list',$methods) ){ ?>
             <li <?php if(!in_array('index_nominee',$methods)){echo 'style="display:none" ';}?> class=" <?php  echo ($controller == 'nominees' && $action == 'index')?'active' :'' ?>">
                 <?php echo $this->Html->Link('Nominee List',array('controller' =>'nominees','action'=> 'index'),array('escape'=>false)); ?>
             </li >
-            <li <?php if(!in_array('indexmy_profile',$methods)){echo 'style="display:none" ';}?> class="<?php echo ($controller == 'profiles' && $action == 'indexmy')?'active' :'' ?>">
-                <?php echo $this->Html->Link('My Profile ',array('controller' =>'profiles','action'=> 'indexmy'),array('escape'=>false)); ?>
+            <li <?php if(!in_array('indexmy_profile',$methods)){echo 'style="display:none" ';}?> class="<?php echo ($controller == 'nominees' && $action == 'indexmy')?'active' :'' ?>">
+                <?php echo $this->Html->Link('My Nominee ',array('controller' =>'nominees','action'=> 'indexmy'),array('escape'=>false)); ?>
             </li >
 
         </ul>
