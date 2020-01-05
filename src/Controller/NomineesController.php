@@ -114,6 +114,64 @@ class NomineesController extends AppController
     }
 
     /**
+     * Add method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
+    public function addmy()
+    {
+        $nominee = $this->Nominees->newEntity();
+        if ($this->request->is('post')) {
+            //directory work
+            $dir = \Cake\Core\Configure::read('App.wwwRoot');
+            $upLoadsDirectory = $dir.'/img/nominee';
+
+            if (!file_exists($upLoadsDirectory)) {
+                mkdir($upLoadsDirectory, 0777, true);
+            }
+
+            //for picture
+            $fileParams = $this->request->data['picture'];
+            $info = pathinfo($fileParams['name']);
+            $pathPicture = md5($fileParams['name']) . '-' . uniqid() . '.' . $info['extension'];
+            if (!move_uploaded_file($this->request->data['picture']['tmp_name'], $upLoadsDirectory.'/' . $pathPicture)) {
+                var_dump('Cant move picture ');
+                die;
+            }
+            unset($this->request->data['picture']);
+            //end
+            //start nid
+            $fileParams = $this->request->data['nid'];
+            $info = pathinfo($fileParams['name']);
+            $pathNid = md5($fileParams['name']) . '-' . uniqid() . '.' . $info['extension'];
+            if (!move_uploaded_file($this->request->data['nid']['tmp_name'], $upLoadsDirectory.'/' . $pathNid)) {
+                var_dump('Cant move nid ');
+                die;
+            }
+            unset($this->request->data['nid']);
+            //end
+
+            $nominee = $this->Nominees->patchEntity($nominee, $this->request->getData());
+            $nominee->picture = $pathPicture;
+            $nominee->nid = $pathNid;
+            $nominee->user_id = $this->_userId();
+            if ($this->Nominees->save($nominee)) {
+                $this->Flash->success(__('The nominee has been saved.'));
+
+                return $this->redirect(['action' => 'indexmy']);
+            }
+            $this->Flash->error(__('The nominee could not be saved. Please, try again.'));
+        }
+        $users = $this->Nominees->Users->find('list', ['limit' => 200]);
+        $relations =array(""=>"Select",
+            "Father"=>"Father",
+            "Mother"=>"Mother",
+            "Brother"=>"Brother",
+            "Sister"=>"Sister");
+        $this->set(compact('nominee', 'users','relations'));
+    }
+
+    /**
      * Edit method
      *
      * @param string|null $id Nominee id.
