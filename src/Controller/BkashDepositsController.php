@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use DateTime;
 
 /**
  * BkashDeposits Controller
@@ -20,12 +21,30 @@ class BkashDepositsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users']
-        ];
-        $bkashDeposits = $this->paginate($this->BkashDeposits);
+        $data= $this->request->getData();
+        if(!empty($data)){
+            $dt = new DateTime($data['from']);
+            $from = $dt->format('Y-m-d');
 
-        $this->set(compact('bkashDeposits'));
+            $dt = new DateTime($data['to']);
+            $to = $dt->format('Y-m-d');
+
+            $this->paginate = [
+                'contain' => ['Users']
+            ];
+            $bkashDeposits = $this->paginate($this->BkashDeposits->find('all')->where(['date >=' => $from,'date <=' => $to ]));
+            $this->set(compact('bkashDeposits'));
+        } else {
+
+            $this->paginate = [
+                'contain' => ['Users']
+            ];
+            $bkashDeposits = $this->paginate($this->BkashDeposits);
+
+            $this->set(compact('bkashDeposits'));
+        }
+
+
     }
 
     /**
@@ -173,3 +192,4 @@ class BkashDepositsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 }
+

@@ -39,7 +39,17 @@
                         <div class="ibox-content">
 
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover dataTables-list-buttons" >
+                                <div class="row">
+                                    <?php echo $this->Form->create($bkashDeposit, ['url' => ['action' => 'index']]); ?>
+                                    <p id="date_filter" style="margin-left: 40px">
+                                            <span id="date-label-from" class="date-label">From: </span><input name="from" class="date_range_filter date" type="date" id="datepicker_from" />
+                                            <span id="date-label-to" class="date-label">To:<input name="to" class="date_range_filter date" type="date" id="datepicker_to" />
+                                            <span><input  type="submit" value="Submit" />
+                                    </p>
+                                    <?php echo $this->Form->end(); ?>
+                                </div>
+                                <table id="example" class="table table-striped table-bordered table-hover dataTables-list-buttons" >
+
                                     <thead>
                                     <tr>
                                         <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -50,7 +60,6 @@
                                         <th scope="col"><?= $this->Paginator->sort('bkash_number') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('reference_number') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('amount') ?></th>
-
                                         <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                                         <th scope="col" class="actions"><?= __('Actions') ?></th>
                                     </tr>
@@ -69,7 +78,7 @@
                                                 <td><?= $this->Number->format($bkashDeposit->id) ?></td>
                                                 <td><?= h($bkashDeposit->payment_type) ?></td>
                                                 <td><?= h($bkashDeposit->payment_for) ?></td>
-                                                <td><?= h($bkashDeposit->date) ?></td>
+                                                <td><?=  date_format($bkashDeposit->date,"m/d/y") ?></td>
                                                 <td><?= h($bkashDeposit->payment_month) ?></td>
                                                 <td><?= h($bkashDeposit->bkash_number) ?></td>
                                                 <td><?= h($bkashDeposit->reference_number) ?></td>
