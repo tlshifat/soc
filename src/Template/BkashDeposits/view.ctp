@@ -50,7 +50,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <dl class="dl-horizontal">
-                                        <dt><?= __('Bkash Number ') ?>:</dt> <dd><?= h($bkashDeposit->bkash_number) ?></dd>
+                                        <dt><?= __('Payment Type ') ?>:</dt> <dd><?= h($bkashDeposit->payment_type) ?></dd>
 
                                     </dl>
                                     <dl class="dl-horizontal">
@@ -60,8 +60,15 @@
                                     <dl class="dl-horizontal">
                                         <dt><?= __('Amount') ?>:</dt> <dd><span class=""><?= h($bkashDeposit->amount) ?></span></dd>
                                     </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Comment') ?>:</dt> <dd><span class=""><?= h($bkashDeposit->comment) ?></span></dd>
+                                    </dl>
                                 </div>
                                 <div class="col-lg-6">
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Payment For ') ?>:</dt> <dd><?= h($bkashDeposit->payment_for) ?></dd>
+
+                                    </dl>
                                     <dl class="dl-horizontal">
                                         <dt><?= __('Date') ?>:</dt> <dd><span class=""><?= h($bkashDeposit->date) ?></span></dd>
                                     </dl>
