@@ -30,8 +30,8 @@
                         <div class="ibox-title ">
                             <h5>Bkash Deposits Listing</h5>
                             <span>
-                                <?php echo $this->Html->link('Add New',
-                                    ['controller' => 'nominees','action' => 'add'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
+                                <?php echo $this->Html->link('Add New Payments',
+                                    ['controller' => 'bkashDeposits','action' => 'add'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
                             </span>
                         </div>
 
