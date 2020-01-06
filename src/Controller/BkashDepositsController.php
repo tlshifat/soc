@@ -29,6 +29,19 @@ class BkashDepositsController extends AppController
     }
 
     /**
+     * Index my method
+     *
+     * @return \Cake\Http\Response|void
+     */
+    public function indexmy()
+    {
+        $this->paginate = [
+            'contain' => ['Users']
+        ];
+        $bkashDeposits = $this->paginate($this->BkashDeposits->find('all')->where(['user_id'=> $this->Auth->user()['id']]));
+        $this->set(compact('bkashDeposits'));
+    }
+    /**
      * View method
      *
      * @param string|null $id Bkash Deposit id.

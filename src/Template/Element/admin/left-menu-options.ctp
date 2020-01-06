@@ -138,10 +138,10 @@ if(in_array('view_payment_list',$methods) ){ ?>
         <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Payments</span><span class="fa arrow"></span></a>
         <ul class="nav nav-second-level collapse">
 
-            <li <?php if(!in_array('index_nominee',$methods)){echo 'style="display:none" ';}?> class=" <?php  echo ($controller == 'nominees' && $action == 'index')?'active' :'' ?>">
+            <li <?php if(!in_array('index_payment',$methods)){echo 'style="display:none" ';}?> class=" <?php  echo ($controller == 'bkashDeposits' && $action == 'index')?'active' :'' ?>">
                 <?php echo $this->Html->Link('Payment List',array('controller' =>'bkashDeposits','action'=> 'index'),array('escape'=>false)); ?>
             </li >
-            <li <?php if(!in_array('indexmy_nominee',$methods)){echo 'style="display:none" ';}?> class="<?php echo ($controller == 'nominees' && $action == 'indexmy')?'active' :'' ?>">
+            <li <?php if(!in_array('indexmy_payment',$methods)){echo 'style="display:none" ';}?> class="<?php echo ($controller == 'bkashDeposits' && $action == 'indexmy')?'active' :'' ?>">
                 <?php echo $this->Html->Link('My Payment ',array('controller' =>'bkashDeposits','action'=> 'indexmy'),array('escape'=>false)); ?>
             </li >
 
