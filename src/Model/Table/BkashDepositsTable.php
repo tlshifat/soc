@@ -70,6 +70,12 @@ class BkashDepositsTable extends Table
             ->requirePresence('payment_month', 'create')
             ->notEmpty('payment_month');
 
+        $validator
+            ->scalar('payment_type')
+            ->maxLength('payment_type', 33)
+            ->requirePresence('payment_type', 'create')
+            ->notEmpty('payment_type');
+
 
         $validator
             ->scalar('reference_number')
