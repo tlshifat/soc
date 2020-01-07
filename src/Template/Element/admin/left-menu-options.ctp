@@ -120,14 +120,36 @@ if(in_array('view_nominee_list',$methods) ){ ?>
             <li <?php if(!in_array('index_nominee',$methods)){echo 'style="display:none" ';}?> class=" <?php  echo ($controller == 'nominees' && $action == 'index')?'active' :'' ?>">
                 <?php echo $this->Html->Link('Nominee List',array('controller' =>'nominees','action'=> 'index'),array('escape'=>false)); ?>
             </li >
-            <li <?php if(!in_array('indexmy_profile',$methods)){echo 'style="display:none" ';}?> class="<?php echo ($controller == 'profiles' && $action == 'indexmy')?'active' :'' ?>">
-                <?php echo $this->Html->Link('My Profile ',array('controller' =>'profiles','action'=> 'indexmy'),array('escape'=>false)); ?>
+            <li <?php if(!in_array('indexmy_nominee',$methods)){echo 'style="display:none" ';}?> class="<?php echo ($controller == 'nominees' && $action == 'indexmy')?'active' :'' ?>">
+                <?php echo $this->Html->Link('My Nominee ',array('controller' =>'nominees','action'=> 'indexmy'),array('escape'=>false)); ?>
             </li >
 
         </ul>
     </li>
 
 <?php }?>
+<?php
+
+$methods = $this->Session->read('methods');
+
+if(in_array('view_payment_list',$methods) ){ ?>
+
+    <li class = "<?php echo $nom_cls; ?>">
+        <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Payments</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse">
+
+            <li <?php if(!in_array('index_payment',$methods)){echo 'style="display:none" ';}?> class=" <?php  echo ($controller == 'bkashDeposits' && $action == 'index')?'active' :'' ?>">
+                <?php echo $this->Html->Link('Payment List',array('controller' =>'bkashDeposits','action'=> 'index'),array('escape'=>false)); ?>
+            </li >
+            <li <?php if(!in_array('indexmy_payment',$methods)){echo 'style="display:none" ';}?> class="<?php echo ($controller == 'bkashDeposits' && $action == 'indexmy')?'active' :'' ?>">
+                <?php echo $this->Html->Link('My Payment ',array('controller' =>'bkashDeposits','action'=> 'indexmy'),array('escape'=>false)); ?>
+            </li >
+
+        </ul>
+    </li>
+
+<?php }?>
+
 
 <?php if(in_array('add_nominee',$methods) ||  in_array('edit_nominee',$methods)){ ?>
 <li class = "<?php echo $nom_cls; ?>">

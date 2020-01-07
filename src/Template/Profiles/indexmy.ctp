@@ -61,8 +61,6 @@
                                         <th scope="col"><?= $this->Paginator->sort('sgn') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('no_of_share') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('status') ?></th>
-
-
                                         <th scope="col" class="actions"><?= __('Actions') ?></th>
                                     </tr>
                                     </thead>
@@ -93,10 +91,6 @@
                                                 <td><?php echo $this->Html->image('profile/'.$profile->sgn, ['alt' => 'Signature Img','class' => 'img-circle minimize']); ?></td>
                                                 <td><?= h($profile->no_of_share) ?></td>
                                                 <td><b><?php echo $this->Html->link($status,'javascript:void(0)',['_full' => false,'class' => "".' '.$statusClass.' '."manage_status_"] ); ?></b></td>
-
-<!--                                                <td>--><?//= h($dateCreatedFormat) ?><!--</td>-->
-<!--                                                <td>--><?//= h($dateModifiedFormat) ?><!--</td>-->
-
                                                 <td class="actions">
                                                     <?= $this->Html->link(__(''), ['action' => 'viewmy', $profile->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
                                                     <?= $this->Html->link(__(''), ['action' => 'editmy', $profile->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-primary btn-circle fa fa-list']) ?>

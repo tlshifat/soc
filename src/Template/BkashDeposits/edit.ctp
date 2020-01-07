@@ -85,6 +85,26 @@
                                 <div class="hr-line-dashed"></div>
                                 <div class ="row">
                                     <div class="col-md-6">
+                                        <div class="form-group"><label class="col-sm-12">Payment Type </label>
+                                            <div class="col-sm-12">
+                                                <?php echo $this->Form->input('payment_type', ['options'=>$payment_type,'class' => 'form-control','placeholder' => 'Last Name', 'label' => false]); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="col-sm-12">Payment For </label>
+                                            <div class="col-sm-12">
+                                                <?php echo $this->Form->input('payment_for', ['options'=>$payment_for,'class' => 'form-control','placeholder' => 'Last Name', 'label' => false]); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+                                <div class ="row">
+                                    <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12">Amount </label>
                                             <div class="col-sm-12">
                                                 <?php echo $this->Form->input('amount', ['class' => 'form-control','placeholder' => 'Last Name', 'label' => false]); ?>

@@ -12,14 +12,14 @@
         <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Bkash Deposits</h2>
+                <h2>My Payments</h2>
                 <ol class="breadcrumb">
 
                     <li>
-                        <a>Manage Bkash Deposits</a>
+                        <a>Manage My Payments</a>
                     </li>
                     <li class="active">
-                        <strong>Bkash Deposits List</strong>
+                        <strong>Payments List</strong>
                     </li>
                 </ol>
             </div>
@@ -30,10 +30,10 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title ">
-                            <h5>Bkash Deposits Detail</h5>
+                            <h5>Payments Detail</h5>
                             <span>
                                 <?= $this->Html->link(__('Back'), ['action' => 'index'],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Back','class' => 'btn btn-success btn-xs pull-right']) ?>
-                                <?= $this->Html->link(__('Edit Profile'), ['action' => 'edit', $bkashDeposit->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-success btn-xs pull-right back-btn']) ?>
+                                <?= $this->Html->link(__('Edit Payment'), ['action' => 'editmy', $bkashDeposit->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-success btn-xs pull-right back-btn']) ?>
                             </span>
                         </div>
 

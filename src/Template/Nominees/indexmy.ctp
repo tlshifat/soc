@@ -10,14 +10,14 @@
         <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Nominees</h2>
+                <h2>My Nominees</h2>
                 <ol class="breadcrumb">
 
                     <li>
-                        <a>Manage Nominees</a>
+                        <a>Manage My Nominees</a>
                     </li>
                     <li class="active">
-                        <strong>Nominees List</strong>
+                        <strong>My Nominees List</strong>
                     </li>
                 </ol>
             </div>
@@ -31,7 +31,7 @@
                             <h5>Nominees Listing</h5>
                             <span>
                                 <?php echo $this->Html->link('Add New',
-                                    ['controller' => 'nominees','action' => 'add'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
+                                    ['controller' => 'nominees','action' => 'addmy'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
                             </span>
                         </div>
 
@@ -71,10 +71,9 @@
                                                 <td><?php echo $this->Html->image('nominee/'.$nominee->picture, ['alt' => 'Picture ','class' => 'img-circle minimize']); ?></td>
                                                 <td><?= h($nominee->relation_type) ?></td>
                                                 <td class="actions">
-                                                    <?= $this->Html->link(__(''), ['action' => 'view', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
+                                                    <?= $this->Html->link(__(''), ['action' => 'viewmy', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
                                                     <?= $this->Html->link(__(''), ['action' => 'editmy', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-primary btn-circle fa fa-list']) ?>
-                                                    <?= $this->Html->link(__(''), "javascript:void(0);",['type' =>'button','data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Delete','class' => 'btn btn-warning btn-circle fa fa-times deleteData', 'id'=> 'nominees_'.$nominee->id]) ?>
-                                                    <?// Common class 'deleteData' has been used, which will open the confirmation popup. Clicked on Delete icon, will call the common Delete function declared in /js/admin/custom.js ?>
+
                                                 </td>
                                             </tr>
                                         <?php endforeach;
@@ -96,11 +95,6 @@
         <?php echo $this->element('inner_footer'); ?>
     </div>
 </div>
-<script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
 <style>
     .minimize{
         height: 70px;
@@ -108,3 +102,8 @@
     }
 </style>
 
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

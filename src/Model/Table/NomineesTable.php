@@ -76,17 +76,7 @@ class NomineesTable extends Table
             ->requirePresence('email', 'create')
             ->notEmpty('email');
 
-        $validator
-            ->scalar('nid')
-            ->maxLength('nid', 111)
-            ->requirePresence('nid', 'create')
-            ->notEmpty('nid');
 
-        $validator
-            ->scalar('picture')
-            ->maxLength('picture', 111)
-            ->requirePresence('picture', 'create')
-            ->notEmpty('picture');
 
         $validator
             ->scalar('relation_type')

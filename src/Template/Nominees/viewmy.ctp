@@ -12,14 +12,14 @@
         <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Bkash Deposits</h2>
+                <h2>My Nominees</h2>
                 <ol class="breadcrumb">
 
                     <li>
-                        <a>Manage Bkash Deposits</a>
+                        <a>Manage My Nominees</a>
                     </li>
                     <li class="active">
-                        <strong>Bkash Deposits List</strong>
+                        <strong>My Nominees List</strong>
                     </li>
                 </ol>
             </div>
@@ -30,10 +30,10 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title ">
-                            <h5>Bkash Deposits Detail</h5>
+                            <h5>Nominee Detail</h5>
                             <span>
                                 <?= $this->Html->link(__('Back'), ['action' => 'index'],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Back','class' => 'btn btn-success btn-xs pull-right']) ?>
-                                <?= $this->Html->link(__('Edit Profile'), ['action' => 'edit', $bkashDeposit->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-success btn-xs pull-right back-btn']) ?>
+                                <?= $this->Html->link(__('Edit My Nominee'), ['action' => 'editmy', $nominee->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-success btn-xs pull-right back-btn']) ?>
                             </span>
                         </div>
 
@@ -41,44 +41,53 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
-                                        <h2><?= h($bkashDeposit->payment_month) ?></h2>
+                                        <h2><?= h($nominee->name) ?></h2>
                                     </div>
 
 
                                 </div>
                             </div>
+                            <!--                            for picture and sign-->
                             <div class="row">
                                 <div class="col-lg-6">
                                     <dl class="dl-horizontal">
-                                        <dt><?= __('Payment Type ') ?>:</dt> <dd><?= h($bkashDeposit->payment_type) ?></dd>
+                                        <dt><?= __('Picture') ?>:</dt>
+                                        <dd><?php echo $this->Html->image('nominee/'.$nominee->picture, ['alt' => 'Nominee Img','class' => 'img-circle minimize']); ?></dd>
 
                                     </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt><?= __('Reference Number') ?>:</dt> <dd><?= h($bkashDeposit->reference_number) ?></dd>
 
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt><?= __('Amount') ?>:</dt> <dd><span class=""><?= h($bkashDeposit->amount) ?></span></dd>
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt><?= __('Comment') ?>:</dt> <dd><span class=""><?= h($bkashDeposit->comment) ?></span></dd>
-                                    </dl>
                                 </div>
                                 <div class="col-lg-6">
                                     <dl class="dl-horizontal">
-                                        <dt><?= __('Payment For ') ?>:</dt> <dd><?= h($bkashDeposit->payment_for) ?></dd>
+                                        <dt><?= __('NID') ?>:</dt>
+                                        <dd><span class=""><?php echo $this->Html->image('nominee/'.$nominee->nid, ['alt' => 'Nid Img','class' => 'img-circle minimize']); ?></span></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <!--                            end-->
+
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Mobile') ?>:</dt> <dd><?= h($nominee->mobile) ?></dd>
 
                                     </dl>
                                     <dl class="dl-horizontal">
-                                        <dt><?= __('Date') ?>:</dt> <dd><span class=""><?= h($bkashDeposit->date) ?></span></dd>
+                                        <dt><?= __('Email') ?>:</dt> <dd><?= h($nominee->email) ?></dd>
+
+                                    </dl>
+
+                                </div>
+                                <div class="col-lg-6">
+
+
+                                    <dl class="dl-horizontal">
+                                        <dt><?= __('Created') ?>:</dt> <dd><?= h($nominee->created) ?></dd>
                                     </dl>
 
                                     <dl class="dl-horizontal">
-                                        <dt><?= __('Created') ?>:</dt> <dd><?= h($bkashDeposit->created) ?></dd>
-                                    </dl>
-
-                                    <dl class="dl-horizontal">
-                                        <dt><?= __('Modified') ?>:</dt> <dd><?= h($bkashDeposit->modified) ?></dd>
+                                        <dt><?= __('Modified') ?>:</dt> <dd><?= h($nominee->modified) ?></dd>
 
                                     </dl>
                                 </div>
@@ -99,3 +108,10 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
+<style>
+    .minimize{
+        height: 100px;
+        width: 100px;
+    }
+</style>
+
