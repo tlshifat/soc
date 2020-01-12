@@ -165,4 +165,9 @@ class AppController extends Controller
         return $this->Auth->user()['id'];
     }
 
+    public function _config(){
+        $config = TableRegistry::get('Configs')->find();
+        return $config;
+    }
+
 }

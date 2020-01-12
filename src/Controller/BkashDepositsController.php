@@ -99,9 +99,13 @@ class BkashDepositsController extends AppController
      */
     public function add()
     {
+        $a = $this->_config()->where(["name"=>"payments"])->first()->conf;
         $bkashDeposit = $this->BkashDeposits->newEntity();
         if ($this->request->is('post')) {
+
             $bkashDeposit = $this->BkashDeposits->patchEntity($bkashDeposit, $this->request->getData());
+            $bkashDeposit->payment_type = $this->request->data["payment_type"];
+            $bkashDeposit->payment_for = $this->request->data["payment_for"];
             if ($this->BkashDeposits->save($bkashDeposit)) {
                 $this->Flash->success(__('The bkash deposit has been saved.'));
 
@@ -109,8 +113,10 @@ class BkashDepositsController extends AppController
             }
             $this->Flash->error(__('The bkash deposit could not be saved. Please, try again.'));
         }
-        $payment_type = array(""=>"Select","Bank"=>"Bank","Cash"=>"Cash","Bkash"=>"Bkash","Other"=>"Other");
-        $payment_for = array(""=>"Select","Payment For 1"=>"Payment For 1","Payment 3"=>"Payment 3");
+        //$payment_type = array(""=>"Select","Bank"=>"Bank","Cash"=>"Cash","Bkash"=>"Bkash","Other"=>"Other");
+        //$payment_for = array(""=>"Select","Payment For 1"=>"Payment For 1","Payment 3"=>"Payment 3");
+        $payment_type = json_decode($a,true)["payment_type"];
+        $payment_for = json_decode($a,true)["payments_for"];
         $users = $this->BkashDeposits->Users->find('list', ['limit' => 200]);
         $this->set(compact('bkashDeposit', 'users','payment_type','payment_for'));
     }
