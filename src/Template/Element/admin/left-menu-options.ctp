@@ -205,35 +205,15 @@ if(in_array('view_payment_list',$methods) ){ ?>
     </ul>
 </li>
 <?php } ?>
-<!--<li class = "--><?php //echo $page_cls; ?><!--">-->
-<!--    <a href="javascript:void(0)"><i class="fa fa-files-o"></i><span class="nav-label">Manage Pages</span><span class="fa arrow"></span></a>-->
-<!--    <ul class="nav nav-second-level collapse">-->
-<!--        <li class="--><?php //echo ($controller == 'articles' && $action == 'index' || $action == 'view')?'active' :'' ?><!--" >-->
-<!--            --><?php //echo $this->Html->Link('Pages List',array('controller' =>'articles','action'=> 'index'),array('escape'=>false)); ?>
-<!--        </li>-->
-<!--         <li class="--><?php //echo ($controller == 'articles' && $action == 'add')?'active' :'' ?><!--">-->
-<!--            --><?php //echo $this->Html->Link('Add Page',array('controller' =>'articles','action'=> 'add'),array('escape'=>false)); ?>
-<!--        </li >-->
-<!--    </ul>-->
-<!--</li>-->
 
-<!--<li class = "--><?php //echo $template_cls; ?><!--">-->
-<!--    <a href="javascript:void(0)"><i class="fa fa-desktop"></i><span class="nav-label">Email Templates</span><span class="fa arrow"></span></a>-->
-<!--    <ul class="nav nav-second-level collapse">-->
-<!--        <li class="--><?php //echo ($controller == 'emailTemplates' && $action == 'index' || $action == 'view')?'active' :'' ?><!--" >-->
-<!--            --><?php //echo $this->Html->Link('Templates List',array('controller' =>'emailTemplates','action'=> 'index'),array('escape'=>false)); ?>
-<!--        </li>-->
-<!--    </ul>-->
-<!--</li>-->
-
-<!--<li class = "--><?php //echo $template_cls; ?><!--">-->
-<!--    <a href="javascript:void(0)"><i class="fa fa-question"></i><span class="nav-label">FAQ Management</span><span class="fa arrow"></span></a>-->
-<!--     <ul class="nav nav-second-level collapse">-->
-<!--        <li class="--><?php //echo ($controller == 'articles' && $action == 'index' || $action == 'view')?'active' :'' ?><!--" >-->
-<!--            --><?php //echo $this->Html->Link('FAQ List',array('controller' =>'faq','action'=> 'index'),array('escape'=>false)); ?>
-<!--        </li>-->
-<!--         <li class="--><?php //echo ($controller == 'articles' && $action == 'add')?'active' :'' ?><!--">-->
-<!--            --><?php //echo $this->Html->Link('Add FAQ',array('controller' =>'faq','action'=> 'add'),array('escape'=>false)); ?>
-<!--        </li >-->
-<!--    </ul>-->
-<!--</li>-->
+    <!--view_configuration_list-->
+<?php if(in_array('view_permission_list',$methods)){ ?>
+    <li class = "<?php echo $permission_cls; ?>">
+        <a href="javascript:void(0)"><i class="fa fa-sitemap"></i><span class="nav-label">Manage Configurations</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse">
+            <li class="<?php echo ($controller == 'configs' && $action == 'index' || $action == 'view')?'active' :'' ?>" >
+                <?php echo $this->Html->Link('Module Configurations',array('controller' =>'configs','action'=> 'index'),array('escape'=>false)); ?>
+            </li>
+        </ul>
+    </li>
+<?php } ?>
