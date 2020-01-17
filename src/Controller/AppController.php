@@ -93,6 +93,9 @@ class AppController extends Controller
             //var_dump($user["id"]);
             //set profile picture
             $profiles = TableRegistry::get('Profiles')->find()->where(["user_id"=>$user["id"]])->firstOrFail();
+            $userRoleId = TableRegistry::get('Users')->getUserRoleId($user['id']);
+            $roles = TableRegistry::get('Roles')->find()->where(["id"=>$userRoleId])->firstOrFail();
+            $this->set('rolename', $roles->role);
             $this->set('profilepicture', $profiles->picture);
             $this->set('loginuserdata', $user);
         }

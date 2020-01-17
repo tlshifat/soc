@@ -45,6 +45,7 @@ class UsersTable extends Table
         $this->hasOne('Profiles', [
             'foreignKey' => 'user_id'
         ]);
+
     }
 
     /**
