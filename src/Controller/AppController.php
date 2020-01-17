@@ -90,6 +90,10 @@ class AppController extends Controller
 
         if($this->Auth->user()){
             $user = $this->Auth->user();
+            //var_dump($user["id"]);
+            //set profile picture
+            $profiles = TableRegistry::get('Profiles')->find()->where(["user_id"=>$user["id"]])->firstOrFail();
+            $this->set('profilepicture', $profiles->picture);
             $this->set('loginuserdata', $user);
         }
 

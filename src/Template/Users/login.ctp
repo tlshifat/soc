@@ -29,7 +29,7 @@
         <?= $this->Form->button(__('Login'), ['type' => 'submit', 'class' => 'btn btn-primary block full-width m-b']) ?>
 
         <a href="#"><small>Forgot password?</small></a>
-       
+
 
 
     <?= $this->Form->end() ?>
