@@ -1,9 +1,9 @@
 <div>
     <div>
-        <h1 class="logo-name">TQM</h1>
+        <h1 class="logo-name"></h1>
     </div>
     <h3><?= __('Register') ?></h3>
-    
+
     <?= $this->Form->create('registerform', ['url' => ['action' => '/register'], 'id' => 'register_form']);?>
         <div class="form-group">
             <?= $this->Form->control('first_name', ['placeholder' => 'First Name', 'required' => true, 'class' => 'form-control', 'label' => false]); ?>
@@ -28,5 +28,5 @@
         <?= $this->Html->link('Login to your account', ['controller'=>'users', 'action'=>'login'], ['class' => 'btn btn-sm btn-white btn-block']) ?>
 
     <?= $this->Form->end() ?>
-    <p class="m-t"> <small>XYZ Company &copy; 2018</small> </p>
+    <p class="m-t"> <small>Shifatul Islam &copy; 2019</small> </p>
 </div>

@@ -3,17 +3,17 @@
         $email = $remembered_data['email'];
         $password = $remembered_data['password'];
         $checkedvalue = 'checked';
-    }else{ 
-        $password = $email = ''; 
+    }else{
+        $password = $email = '';
         $checkedvalue = '';
-    } 
+    }
 ?>
 <div>
     <div>
-        <h1 class="logo-name">TQM</h1>
+        <h1 class="logo-name"></h1>
     </div>
     <h3><?= __('Login') ?></h3>
-    
+
     <?= $this->Form->create('loginform', ['url' => ['action' => '/login'], 'id' => 'login_form']);?>
         <div class="form-group">
             <?= $this->Form->control('email', ['placeholder' => 'Email','value' =>@$email, 'required' => true, 'type' => 'email', 'class' => 'form-control', 'label' => false]); ?>
@@ -29,9 +29,9 @@
         <?= $this->Form->button(__('Login'), ['type' => 'submit', 'class' => 'btn btn-primary block full-width m-b']) ?>
 
         <a href="#"><small>Forgot password?</small></a>
-        <p class="text-muted text-center"><small><?= __('Do not have an account?') ?></small></p>
-        <?= $this->Html->link('Create an account', ['controller'=>'users', 'action'=>'register'], ['class' => 'btn btn-sm btn-white btn-block']) ?>
+       
+
 
     <?= $this->Form->end() ?>
-    <p class="m-t"> <small>XYZ Company &copy; 2018</small> </p>
+    <p class="m-t"> <small> Shifatul Islam &copy; 2020</small> </p>
 </div>
