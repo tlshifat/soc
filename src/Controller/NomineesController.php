@@ -80,6 +80,7 @@ class NomineesController extends AppController
     public function add()
     {
         $nominee = $this->Nominees->newEntity();
+        $a = $this->_config()->where(["name"=>"nominees"])->first()->conf;
         if ($this->request->is('post')) {
             //directory work
             $dir = \Cake\Core\Configure::read('App.wwwRoot');
@@ -121,11 +122,8 @@ class NomineesController extends AppController
             $this->Flash->error(__('The nominee could not be saved. Please, try again.'));
         }
         $users = $this->Nominees->Users->find('list', ['limit' => 200]);
-        $relations =array(""=>"Select",
-            "Father"=>"Father",
-            "Mother"=>"Mother",
-            "Brother"=>"Brother",
-            "Sister"=>"Sister");
+        $relations =json_decode($a,true)["relation"];
+
         $this->set(compact('nominee', 'users','relations'));
     }
 
@@ -137,6 +135,7 @@ class NomineesController extends AppController
     public function addmy()
     {
         $nominee = $this->Nominees->newEntity();
+        $a = $this->_config()->where(["name"=>"nominees"])->first()->conf;
         if ($this->request->is('post')) {
             //directory work
             $dir = \Cake\Core\Configure::read('App.wwwRoot');
@@ -179,11 +178,7 @@ class NomineesController extends AppController
             $this->Flash->error(__('The nominee could not be saved. Please, try again.'));
         }
         $users = $this->Nominees->Users->find('list', ['limit' => 200]);
-        $relations =array(""=>"Select",
-            "Father"=>"Father",
-            "Mother"=>"Mother",
-            "Brother"=>"Brother",
-            "Sister"=>"Sister");
+        $relations =json_decode($a,true)["relation"];
         $this->set(compact('nominee', 'users','relations'));
     }
 
@@ -199,6 +194,7 @@ class NomineesController extends AppController
         $nominee = $this->Nominees->get($id, [
             'contain' => []
         ]);
+        $a = $this->_config()->where(["name"=>"nominees"])->first()->conf;
         if ($this->request->is(['patch', 'post', 'put'])) {
             // copy paste
             $dir = \Cake\Core\Configure::read('App.wwwRoot');
@@ -249,11 +245,7 @@ class NomineesController extends AppController
             $this->Flash->error(__('The nominee could not be saved. Please, try again.'));
         }
         $users = $this->Nominees->Users->find('list', ['limit' => 200]);
-        $relations =array(""=>"Select",
-            "Father"=>"Father",
-            "Mother"=>"Mother",
-            "Brother"=>"Brother",
-            "Sister"=>"Sister");
+        $relations =json_decode($a,true)["relation"];
         $this->set(compact('nominee', 'users','relations'));
     }
 
@@ -269,6 +261,7 @@ class NomineesController extends AppController
         $nominee = $this->Nominees->get($id, [
             'contain' => []
         ]);
+        $a = $this->_config()->where(["name"=>"nominees"])->first()->conf;
         if ($this->request->is(['patch', 'post', 'put'])) {
             // copy paste
             $dir = \Cake\Core\Configure::read('App.wwwRoot');
@@ -320,11 +313,7 @@ class NomineesController extends AppController
             $this->Flash->error(__('The nominee could not be saved. Please, try again.'));
         }
         $users = $this->Nominees->Users->find('list', ['limit' => 200]);
-        $relations =array(""=>"Select",
-            "Father"=>"Father",
-            "Mother"=>"Mother",
-            "Brother"=>"Brother",
-            "Sister"=>"Sister");
+        $relations =json_decode($a,true)["relation"];
         $this->set(compact('nominee', 'users','relations'));
     }
 

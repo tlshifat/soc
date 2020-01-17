@@ -20,8 +20,8 @@ class ConfigsController extends AppController
      */
     public function index()
     {
-        $configs = $this->paginate($this->Configs);
 
+        $configs = $this->paginate($this->Configs);
         $this->set(compact('configs'));
     }
 
