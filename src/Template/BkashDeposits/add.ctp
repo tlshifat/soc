@@ -6,6 +6,9 @@
 $this->Form->unlockField('images');
 $this->Form->unlockField('sgn');
 ?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
 <div id="wrapper">
 
     <?php echo $this->element('admin/sidebar'); ?>
@@ -83,7 +86,7 @@ $this->Form->unlockField('sgn');
                                         <div class="form-group"><label class="col-sm-12 ">Payment Month</label>
                                             <div class="col-sm-12">
                                                 <?php $disabled = (isset($this->request->data['id']) ? 'true' : 'false');  ?>
-                                                <?php echo $this->Form->input('payment_month', [ 'class' => 'form-control','placeholder' => 'Payment Month', 'required' => true, 'label' => false]); ?>
+                                                <?php echo $this->Form->input('payment_month', [ 'class' => 'form-control date-picker','placeholder' => 'Payment Month', 'required' => true, 'label' => false]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -164,4 +167,24 @@ $this->Form->unlockField('sgn');
             <?php echo $this->element('inner_footer'); ?>
         </div>
     </div>
+    <script type="text/javascript">
+        $(function() {
+            $('.date-picker').datepicker( {
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'MM yy',
+                onClose: function(dateText, inst) {
+                    $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                }
+            });
+
+
+        });
+    </script>
+    <style>
+        .ui-datepicker-calendar {
+            display: none;
+        }
+    </style>
 
