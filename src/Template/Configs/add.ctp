@@ -14,14 +14,14 @@ $this->Form->unlockField('sgn');
         <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Payments </h2>
+                <h2>Configs </h2>
                 <ol class="breadcrumb">
 
                     <li>
-                        <a>Manage Payments</a>
+                        <a>Manage Configs</a>
                     </li>
                     <li class="active">
-                        <strong>Payments List</strong>
+                        <strong>Config List</strong>
                     </li>
                 </ol>
             </div>
@@ -32,7 +32,7 @@ $this->Form->unlockField('sgn');
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins tabs-container">
                         <ul class="nav nav-tabs">
-                            <li class="active active-tab" tab="tab-1" ><a data-toggle="tab" href="#tab-1">Basic Info</a></li>
+                            <li class="active active-tab" tab="tab-1" ><a data-toggle="tab" href="#tab-1">Info</a></li>
                         </ul>
                         <div class="ibox-content tab-content">
                             <div id="tab-1" class="tab-pane active">
@@ -92,7 +92,7 @@ $this->Form->unlockField('sgn');
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class="top-btns">
-                                                    <?php echo $this->Html->link('Back', ['controller' => 'profiles','action' => 'index'],['type'=>'button','_full' => false,'class' => 'btn btn-white pull-right m-l-sm']); ?>
+                                                    <?php echo $this->Html->link('Back', ['action' => 'index'],['type'=>'button','_full' => false,'class' => 'btn btn-white pull-right m-l-sm']); ?>
                                                     <?= $this->Form->button('Reset', ['type'=>'reset','_full' => false,'class' => 'btn btn-white pull-right m-l-sm']); ?>
                                                     <?= $this->Form->button('Save Changes',['class' => 'btn btn-primary pull-right m-l-sm', 'type' => 'submit']); ?>
 
