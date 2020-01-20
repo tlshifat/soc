@@ -188,6 +188,9 @@ class UsersController extends AppController
 
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $user = $this->Users->patchEntity($user, $this->request->getData());
+                if(!empty($this->request->data['pass']) && strlen($this->request->data['pass']) > 1 ){
+                    $user->password = $this->request->data['pass'];
+                }
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('The user has been saved.'));
 
@@ -473,6 +476,55 @@ class UsersController extends AppController
         $this->set(compact('users','user_info','profile_info'));
         $this->set('_serialize', ['users']);
 
+    }
+
+
+    public function editmy($id = null)
+    {
+
+        // This function checks for the permission access for this method, based on assigned role.
+        // There should be a 'slug' matching to the parameter passed in this method, in the 'permissions' table.
+        try {
+            //find data of selected user, from associated tables as well
+            $id= $this->_userId();
+            $user = $this->Users->get($id, [
+                'contain' => ['Roles']
+            ]);
+
+            //if page not found, redirect back to list view
+            if (empty($user)) {
+                $this->Flash->error(__('User not found'));
+                return $this->redirect(['action' => 'index']);
+            }
+
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $user = $this->Users->patchEntity($user, $this->request->getData());
+                if(!empty($this->request->data['pass']) && strlen($this->request->data['pass']) > 1 ){
+                    $user->password = $this->request->data['pass'];
+                }
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+
+                    return $this->redirect(['action' => 'dashboard']);
+                }
+                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            }
+
+            // Get all roles from roles table and setting it for roles dropdown
+            $allRoles = $this->Users->getAllRoles();
+
+            //get the selected role id
+            $selectedRole = $user['roles'];
+            $this->set(compact('user','allRoles', 'selectedRole'));
+        } catch (\PDOException $e) {
+            $message = $e->getMessage();
+            $this->Flash->error($message);
+            return $this->redirect(['controller' => 'Users','action' => 'index']);
+        } catch (\Exception $e) {
+            $message = $e->getMessage();
+            $this->Flash->error($message);
+            return $this->redirect(['controller' => 'Users','action' => 'index']);
+        }
     }
 
 

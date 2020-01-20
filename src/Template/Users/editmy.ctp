@@ -40,7 +40,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group"><label class="col-sm-12">First Name</label>
                                                 <div class="col-sm-12">
-                                                    <?php echo $this->Form->input('first_name', ['class' => 'form-control','placeholder' => 'First Name', 'required' => true, 'label' => false]); ?>
+                                                    <?php echo $user->first_name; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -48,7 +48,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group"><label class="col-sm-12">Last Name</label>
                                                 <div class="col-sm-12">
-                                                <?php echo $this->Form->input('last_name', ['class' => 'form-control','placeholder' => 'Last Name', 'label' => false]); ?>
+                                                    <?php echo $user->last_name; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -61,8 +61,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group"><label class="col-sm-12 ">Email</label>
                                                 <div class="col-sm-12">
-                                                <?php $disabled = (isset($this->request->data['id']) ? 'true' : 'false');  ?>
-                                                <?php echo $this->Form->input('email', ['disabled' => $disabled, 'class' => 'form-control','placeholder' => 'Email', 'required' => true, 'label' => false]); ?>
+
+                                                    <?php echo $user->email; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -87,27 +87,20 @@
                                         }
 
                                         ?>
-
                                         <div class="col-md-6">
-                                            <div class="form-group"><label class="col-sm-12 ">Role</label>
+                                            <div class="form-group"><label class="col-sm-12 ">Status</label>
                                                 <div class="col-sm-12">
-                                                    <?php   echo $this->Form->control('role',['multiple' => false,'options' => @$role_data,'type' => 'select','class' => '    form-control','value' => $roles,'label' => false]);
-                                                    ?>
+
+                                                    <?php echo $user->status==1?"Approved":"Not Approved"; ?>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
 
                                  <div class="hr-line-dashed"></div>
                                  <div class ="row">
-                                     <div class="col-md-6">
-                                         <div class="form-group"><label class="col-sm-12 ">Status</label>
-                                             <div class="col-sm-12">
-                                                 <?php $disabled = (isset($this->request->data['id']) ? 'true' : 'false');  ?>
-                                                 <?php echo $this->Form->input('status', ['disabled' => $disabled, 'class' => 'form-control','placeholder' => 'Email', 'required' => true, 'label' => false]); ?>
-                                             </div>
-                                         </div>
-                                     </div>
+
                                      <div class="col-md-6">
                                          <div class="form-group"><label class="col-sm-12 ">Password</label>
                                              <div class="col-sm-12">

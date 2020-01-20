@@ -72,11 +72,16 @@ if(in_array('add_user',$methods) ||  in_array('edit_user',$methods)){ ?>
 <li class = "<?php echo $user_cls; ?>">
     <a href="javascript:void(0)"><i class="fa fa-user"></i><span class="nav-label">Manage Users</span><span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
+        <?php if(in_array('add_user',$methods)){ ?>
         <li class="<?php echo ($controller == 'users' && $action == 'index' || $action == 'view')?'active' :'' ?>" >
             <?php echo $this->Html->Link('Users List',array('controller' =>'users','action'=> 'index'),array('escape'=>false)); ?>
         </li>
         <li class="<?php echo ($controller == 'users' && $action == 'add')?'active' :'' ?>">
             <?php echo $this->Html->Link('Add User',array('controller' =>'users','action'=> 'add'),array('escape'=>false)); ?>
+        </li >
+        <?php } ?>
+        <li class="<?php echo ($controller == 'users' && $action == 'editmy')?'active' :'' ?>">
+            <?php echo $this->Html->Link('Edit User',array('controller' =>'users','action'=> 'editmy'),array('escape'=>false)); ?>
         </li >
 
 
