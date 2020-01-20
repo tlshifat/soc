@@ -10,14 +10,14 @@
         <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Bkash Deposits</h2>
+                <h2>My Payments</h2>
                 <ol class="breadcrumb">
 
                     <li>
-                        <a>Manage Bkash Deposits</a>
+                        <a>Manage Payments</a>
                     </li>
                     <li class="active">
-                        <strong>Bkash Deposits List</strong>
+                        <strong>My Payments List</strong>
                     </li>
                 </ol>
             </div>
@@ -28,10 +28,10 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title ">
-                            <h5>Bkash Deposits Listing</h5>
+                            <h5>My Payments Listing</h5>
                             <span>
-                                <?php echo $this->Html->link('Add New Payments',
-                                    ['controller' => 'bkashDeposits','action' => 'add'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
+                                <?php echo $this->Html->link('Add My New Payments',
+                                    ['controller' => 'bkashDeposits','action' => 'addmy'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
                             </span>
                         </div>
 
