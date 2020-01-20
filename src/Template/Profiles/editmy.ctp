@@ -63,8 +63,8 @@ $this->Form->unlockField('sgn');
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="col-sm-12 ">Email</label>
                                             <div class="col-sm-12">
-                                                <?php $disabled = (isset($this->request->data['id']) ? 'true' : 'false');  ?>
-                                                <?php echo $this->Form->input('email', ['disabled' => $disabled, 'class' => 'form-control','placeholder' => 'Email', 'required' => true, 'label' => false]); ?>
+                                                <?php echo $profile->email ; ?>
+
                                             </div>
                                         </div>
                                     </div>

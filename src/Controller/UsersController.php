@@ -108,7 +108,17 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($response = $this->Users->save($user)) {
+                //save profile
+                $profileTable = TableRegistry::get('Profiles');
+                $profile = $profileTable->newEntity();
+                $profile['user_id'] = $response['id'];
+                $profile['email'] = $response['email'];
+                $profile['name'] = $response['first_name'].' '.$response['last_name'];
+                $profile['status'] = 2;
+                if($profileTable->save($profile)){
 
+                }
+                //end
 //                //************Sending Email to client************
 //
 //                /****** set these variables if you want to send an email ******/
