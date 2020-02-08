@@ -52,7 +52,7 @@
 
                                     <thead>
                                     <tr>
-                                        <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+
                                         <th scope="col"><?= $this->Paginator->sort('payment_type') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('payment_for') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('date') ?></th>
@@ -75,7 +75,7 @@
                                             ?>
                                             <tr class="gradeX_<?php echo $bkashDeposit['id']; ?>">
 
-                                                <td><?= $this->Number->format($bkashDeposit->id) ?></td>
+                                                
                                                 <td><?= h($bkashDeposit->payment_type) ?></td>
                                                 <td><?= h($bkashDeposit->payment_for) ?></td>
                                                 <td><?=  date_format($bkashDeposit->date,"m/d/y") ?></td>
