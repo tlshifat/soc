@@ -47,7 +47,7 @@
                                         <th scope="col"><?= $this->Paginator->sort('payment_for') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('date') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('payment_month') ?></th>
-                                        <th scope="col"><?= $this->Paginator->sort('bkash_number') ?></th>
+
                                         <th scope="col"><?= $this->Paginator->sort('reference_number') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('amount') ?></th>
 
@@ -71,7 +71,7 @@
                                                 <td><?= h($bkashDeposit->payment_for) ?></td>
                                                 <td><?= h($bkashDeposit->date) ?></td>
                                                 <td><?= h($bkashDeposit->payment_month) ?></td>
-                                                <td><?= h($bkashDeposit->bkash_number) ?></td>
+
                                                 <td><?= h($bkashDeposit->reference_number) ?></td>
                                                 <td><?= h($bkashDeposit->amount) ?></td>
                                                 <td><?= $bkashDeposit->has('user') ? $this->Html->link($bkashDeposit->user->id, ['controller' => 'Users', 'action' => 'view', $bkashDeposit->user->id]) : '' ?></td>

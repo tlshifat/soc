@@ -51,13 +51,7 @@ $this->Form->unlockField('sgn');
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="col-sm-12">Date</label>
-                                            <div class="col-sm-12">
-                                                <?php echo $this->Form->input('date', ['class' => 'form-control', 'label' => false]); ?>
-                                            </div>
-                                        </div>
-                                    </div>
+
 
                                 </div>
                                 <div class="hr-line-dashed"></div>
@@ -169,6 +163,7 @@ $this->Form->unlockField('sgn');
     </div>
     <script type="text/javascript">
         $(function() {
+            // $( ".datepicker" ).datepicker();
             $('.date-picker').datepicker( {
                 changeMonth: true,
                 changeYear: true,
@@ -180,7 +175,11 @@ $this->Form->unlockField('sgn');
             });
 
 
+
+
         });
+
+
     </script>
     <style>
         .ui-datepicker-calendar {

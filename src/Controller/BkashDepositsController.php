@@ -106,6 +106,7 @@ class BkashDepositsController extends AppController
             $bkashDeposit = $this->BkashDeposits->patchEntity($bkashDeposit, $this->request->getData());
             $bkashDeposit->payment_type = $this->request->data["payment_type"];
             $bkashDeposit->payment_for = $this->request->data["payment_for"];
+            $bkashDeposit->date =date("Y-m-d") ;
             if ($this->BkashDeposits->save($bkashDeposit)) {
                 $this->Flash->success(__('The bkash deposit has been saved.'));
 
@@ -131,6 +132,7 @@ class BkashDepositsController extends AppController
             $bkashDeposit->payment_type = $this->request->data["payment_type"];
             $bkashDeposit->payment_for = $this->request->data["payment_for"];
             $bkashDeposit->user_id = $this->_userId();
+            $bkashDeposit->date =date("Y-m-d");
             if ($this->BkashDeposits->save($bkashDeposit)) {
                 $this->Flash->success(__('The bkash deposit has been saved.'));
 
