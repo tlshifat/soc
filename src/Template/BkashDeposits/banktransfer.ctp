@@ -10,11 +10,11 @@
         <?php echo $this->element('admin/top_header'); ?>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Payments</h2>
+                <h2>Bank transfer</h2>
                 <ol class="breadcrumb">
 
                     <li>
-                        <a>Manage Payments</a>
+                        <a>Manage Bank transfer</a>
                     </li>
                     <li class="active">
                         <strong>Payments List</strong>
@@ -29,25 +29,13 @@
                     <div class="ibox float-e-margins">
                         <div class="ibox-title ">
                             <h5>Payments Listing</h5>
-                            <span>
-                                <?php echo $this->Html->link('Add New Payments',
-                                    ['controller' => 'bkashDeposits','action' => 'add'],['type'=>'button','_full' => false,'class' => 'btn btn-success btn-xs pull-right']); ?>
-                            </span>
                         </div>
 
 
                         <div class="ibox-content">
 
                             <div class="table-responsive">
-                                <div class="row">
-                                    <?php echo $this->Form->create($bkashDeposit, ['url' => ['action' => 'index']]); ?>
-                                    <p id="date_filter" style="margin-left: 40px">
-                                            <span id="date-label-from" class="date-label">From: </span><input name="from" class="date_range_filter date" type="date" id="datepicker_from" />
-                                            <span id="date-label-to" class="date-label">To:<input name="to" class="date_range_filter date" type="date" id="datepicker_to" />
-                                            <span><input  type="submit" value="Submit" />
-                                    </p>
-                                    <?php echo $this->Form->end(); ?>
-                                </div>
+
                                 <table id="example" class="table table-striped table-bordered table-hover dataTables-list-buttons" >
 
                                     <thead>
@@ -57,7 +45,7 @@
                                         <th scope="col"><?= $this->Paginator->sort('payment_for') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('date') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('payment_month') ?></th>
-                                        
+
                                         <th scope="col"><?= $this->Paginator->sort('reference_number') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('amount') ?></th>
                                         <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
@@ -83,14 +71,13 @@
 
                                                 <td><?= h($bkashDeposit->reference_number) ?></td>
                                                 <td><?= h($bkashDeposit->amount) ?></td>
-                                                <td><?= $bkashDeposit->has('user') ? $this->Html->link($bkashDeposit->user->id, ['controller' => 'Users', 'action' => 'view', $bkashDeposit->user->id]) : '' ?></td>
+                                                <td><?= $bkashDeposit->has('user') ? $this->Html->link($bkashDeposit->user->name, ['controller' => 'Users', 'action' => 'view', $bkashDeposit->user->id]) : '' ?></td>
                                                 <td class="actions">
-                                                    <?= $this->Html->link(__(''), ['action' => 'view', $bkashDeposit->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Detail View','class' => 'btn btn-info btn-circle fa fa-paste']) ?>
-                                                    <?= $this->Html->link(__(''), ['action' => 'edit', $bkashDeposit->id],['data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Edit','class' => 'btn btn-primary btn-circle fa fa-list']) ?>
-                                                    <?= $this->Html->link(__(''), "javascript:void(0);",['type' =>'button','data-toggle' =>'tooltip','data-placement' => 'bottom', 'title' =>'Delete','class' => 'btn btn-warning btn-circle fa fa-times deleteData', 'id'=> 'users_'.$bkashDeposit->id]) ?>
-                                                    <?// Common class 'deleteData' has been used, which will open the confirmation popup. Clicked on Delete icon, will call the common Delete function declared in /js/admin/custom.js ?>
+                                                    <input class="pay" value="<?php echo $bkashDeposit->id; ?>" type="checkbox"/>
                                                 </td>
                                             </tr>
+
+
                                         <?php endforeach;
                                     } else { ?>
                                         <tr>
@@ -102,6 +89,10 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <?php echo $this->Form->create($bkashDeposit, ['id'=>'bank-transfer','url' => ['action' => 'transfer']]); ?>
+                            <input type="hidden" name="payable" id="payable"/>
+                            <input type="button" class="btn btn-success" value="Proceed" onclick="banktransfer();"/>
+                            <?php echo $this->Form->end(); ?>
                         </div>
                     </div>
                 </div>
@@ -110,3 +101,27 @@
         <?php echo $this->element('inner_footer'); ?>
     </div>
 </div>
+
+<script type="application/javascript">
+    function banktransfer(){
+        var checkedVals = $('.pay:checkbox:checked').map(function() {
+            return this.value;
+        }).get();
+        $("#payable").val(checkedVals.join(","));
+        $("#bank-transfer").submit();
+        // var model="bkash-deposits";
+        // var data= checkedVals.join(",");
+        // //call to controller
+        // $.ajax({
+        //     method: "POST",
+        //     data: data,
+        //     dataType: "json",
+        //     url: model + '/transfer' ,
+        //     success:function(data) {
+        //         alert("ok");
+        //     }
+        // });
+        // //end
+
+    }
+</script>

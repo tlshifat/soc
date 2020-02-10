@@ -146,9 +146,14 @@ if(in_array('view_payment_list',$methods) ){ ?>
             <li <?php if(!in_array('index_payment',$methods)){echo 'style="display:none" ';}?> class=" <?php  echo ($controller == 'bkashDeposits' && $action == 'index')?'active' :'' ?>">
                 <?php echo $this->Html->Link('Payment List',array('controller' =>'bkashDeposits','action'=> 'index'),array('escape'=>false)); ?>
             </li >
+            <li <?php if(!in_array('index_payment',$methods)){echo 'style="display:none" ';}?> class=" <?php  echo ($controller == 'bkashDeposits' && $action == 'banktransfer')?'active' :'' ?>">
+                <?php echo $this->Html->Link('Bank Transfer',array('controller' =>'bkashDeposits','action'=> 'banktransfer'),array('escape'=>false)); ?>
+            </li >
             <li <?php if(!in_array('indexmy_payment',$methods)){echo 'style="display:none" ';}?> class="<?php echo ($controller == 'bkashDeposits' && $action == 'indexmy')?'active' :'' ?>">
                 <?php echo $this->Html->Link('My Payment ',array('controller' =>'bkashDeposits','action'=> 'indexmy'),array('escape'=>false)); ?>
             </li >
+
+
 
         </ul>
     </li>
