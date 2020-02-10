@@ -2,6 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Database\Expression\QueryExpression;
+use Cake\ORM\Query;
+use Cake\ORM\TableRegistry;
 use DateTime;
 
 /**
@@ -41,6 +44,39 @@ class BkashDepositsController extends AppController
             ];
             $bkashDeposits = $this->paginate($this->BkashDeposits);
 
+            $this->set(compact('bkashDeposits'));
+        }
+
+
+    }
+
+
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|void
+     */
+    public function banktransfer()
+    {
+        $data= $this->request->getData();
+        if(!empty($data)){
+            $dt = new DateTime($data['from']);
+            $from = $dt->format('Y-m-d');
+
+            $dt = new DateTime($data['to']);
+            $to = $dt->format('Y-m-d');
+
+            $this->paginate = [
+                'contain' => ['Users']
+            ];
+            $bkashDeposits = $this->paginate($this->BkashDeposits->find('all')->where(['date >=' => $from,'date <=' => $to ]));
+            $this->set(compact('bkashDeposits'));
+        } else {
+
+            $this->paginate = [
+                'contain' => ['Users']
+            ];
+            $bkashDeposits = $this->paginate($this->BkashDeposits->find()->where(['processed'=>'No']));
             $this->set(compact('bkashDeposits'));
         }
 
@@ -224,5 +260,58 @@ class BkashDepositsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|void
+     */
+    public function transfer()
+    {
+        if ($this->request->is(['get'])) {
+
+
+            $data = explode(',',$_GET["payable"]);
+            $query = $this->BkashDeposits->query();
+            $query->update()
+                ->set(['processed' => 'Yes'])
+                ->where(['id IN' => $data])
+                ->execute();
+
+            foreach ($data as $item){
+                $bankTransferEntity[] = array(
+                    "bkash_deposit_id" =>$item,
+                    "bank_account_id" =>$_GET["bank"],
+                    "user_id"=>$this->_userId()
+                );
+            }
+            //bulk insert
+            $poProducts = TableRegistry::get('BankTransfers');
+            $poentities = $poProducts->newEntities($bankTransferEntity);
+            $poResult = $poProducts->saveMany($poentities, array('atomic' => false));
+            //end
+            $this->Flash->success(__('Transfer successful.'));
+            return $this->redirect(['action' => 'banktransfer']);
+        } else {
+            $payable = $_POST["payable"];
+            $_POST["payable"] = explode(',',$_POST["payable"]);
+
+            $this->paginate = [
+                'contain' => ['Users']
+            ];
+            $bkashDeposits = $this->paginate($this->BkashDeposits->find()->where(function (QueryExpression $exp, Query $q) {
+                return $exp->in('BkashDeposits.id', $_POST["payable"]);
+            }));
+            $sum = 0;
+            foreach ($bkashDeposits as $item){
+                $sum = $sum+$item->amount;
+            }
+            $bankAccounts = TableRegistry::get('BankAccounts')->find()->toArray();
+            $this->set(compact('bkashDeposits','sum','payable','bankAccounts'));
+
+        }
+    }
+
+
 }
 
